@@ -15,7 +15,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What must be checked before completing a case?",
     "Step-by-Step Procedure": "1. Verify the doctor/practice.\n2. Verify the patient name.\n3. Confirm the duplicate/history check was completed.\n4. Confirm the Rx was reviewed and the case is within current scope/routing.\n5. Verify product/material, tooth, model/account preference, shade, and requested due date.\n6. Verify required case notes.\n7. Verify the workflow is Digital and the schedule is generated.\n8. Confirm the ABS case number exists.\n9. Confirm the Rx is uploaded to the correct Case Photos record.\n10. Only after all checks pass should the case be completed in the current approved assignment workflow.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Final Case Quality Control Checklist"
+    "Title": "Final Case Quality Control Checklist",
+    "Search Intent Examples": "What do I check before completing the case? What is the final QC checklist?"
   },
   {
     "Article ID": "KB-130",
@@ -33,7 +34,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What if the Digital option does not appear immediately?",
     "Step-by-Step Procedure": "1. Open the workflow selection and use the arrow/drop-down to look for Digital.\n2. If Digital appears, select it and continue.\n3. If it does not appear, do not choose an incorrect substitute; close/reopen or restart ABS.\n4. Reopen the case and check again.\n5. If Digital is still unavailable, stop and escalate rather than selecting Analog.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Missing Digital Workflow Option Troubleshooting"
+    "Title": "Missing Digital Workflow Option Troubleshooting",
+    "Search Intent Examples": "Digital is missing in ABS. I cannot find the Digital option. What should I do?"
   },
   {
     "Article ID": "KB-131",
@@ -51,7 +53,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What if Mini Model is missing from ABS?",
     "Step-by-Step Procedure": "1. Open the model selection and check for Mini Model.\n2. If Mini Model is unexpectedly missing, stop before choosing another model.\n3. Restart/reopen ABS.\n4. Reopen the case and check the model list again.\n5. If Mini Model returns, continue and reverify the selection.\n6. If it remains missing, escalate instead of substituting an unapproved model.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Missing Mini Model Option Troubleshooting"
+    "Title": "Missing Mini Model Option Troubleshooting",
+    "Search Intent Examples": "Mini Model is missing in ABS. I cannot select Mini Model. What should I do?"
   },
   {
     "Article ID": "P-001",
