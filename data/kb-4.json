@@ -243,6 +243,25 @@
     "Search Intent Examples": "What shipping method do we support? What carrier should I select? Do we use UPS? What shipping should I choose?"
   },
   {
+    "Article ID": "KB-096",
+    "Category": "Scheduling",
+    "Question": "What should be done if an Aspen case is short by one day or by two or more days?",
+    "Official Answer / SOP": "For Aspen cases, a schedule that is exactly one day short may proceed. If the schedule is short by two days or more, do not proceed normally; escalate the case for review.",
+    "Keywords": "Aspen, Aspen Dental, one day short, 1 day short, two days short, 2 days short, more than 2 days short, schedule, escalate",
+    "Status": "Official",
+    "Confirmed By": "Current process clarification",
+    "Effective Date": "2026-09-05",
+    "Last Updated": "2026-09-05",
+    "Version": "1.0",
+    "Notes": "This rule is specific to Aspen cases. Do not substitute the OCIN two-day-short due-date procedure for Aspen unless newer guidance explicitly says to do so.",
+    "Source Basis": "Current team process clarification provided September 2026",
+    "Purpose": "Define how to handle Aspen cases when the ABS-generated schedule is short.",
+    "Step-by-Step Procedure": "1. Confirm that the case is an Aspen case.\n2. Generate the schedule in ABS and compare it with the requested delivery/due date.\n3. If the Aspen schedule is exactly one day short, proceed with the case under the confirmed Aspen guidance.\n4. If the Aspen schedule is short by two days or more, stop normal processing and escalate the case for review.\n5. Do not apply the OCIN two-day-short procedure to Aspen unless a newer confirmed instruction specifically directs it.",
+    "Stop / Escalate When": "Escalate any Aspen case that is short by two days or more, or any Aspen scheduling exception that is not clearly covered by the one-day-short rule.",
+    "Title": "Aspen Schedule Shortage Handling",
+    "Search Intent Examples": "Aspen is one day short. Can I proceed? Aspen is 1 day short. What should I do? Aspen is two days short. Should I escalate? Aspen is 2 days short. Aspen is more than 2 days short. What do I do?"
+  },
+  {
     "Article ID": "KB-100",
     "Category": "Save & Case Number",
     "Question": "How is the ABS case saved and numbered?",
