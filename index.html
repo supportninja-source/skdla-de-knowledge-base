@@ -31,7 +31,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <h1>Data Entry Knowledge Base</h1>
 <p class="subtitle">Search step-by-step SKDLA Data Entry SOPs for portal scraping, ABS case entry, Orange County routing, Rx/document requirements, scheduling, troubleshooting, and quality control. The retired case-designation tracker has been removed. ClearPath assignment instructions will be added once the official steps are provided.</p>
 </div></header>
-<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Describe what you need help with — e.g., cannot upload Rx, implant case, OCIN short due date..." aria-label="Search knowledge base"></div></div><div id="semanticStatus" class="semantic-status fallback">Smart search is ready. For longer questions, semantic matching will load automatically.</div><section id="assistantPanel" class="assistant-panel" aria-live="polite"><div class="assistant-card"><div class="assistant-head"><b>Policy Guidance</b><span id="assistantState" class="assistant-state">GROUNDED IN SOPs</span></div><div id="assistantBody" class="assistant-body"></div><div id="assistantRefs" class="assistant-refs"></div></div></section>
+<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Ask anything about the process — e.g., how do I enter a case in ABS, what shipping do we use, doctor not found..." aria-label="Search knowledge base"></div></div><div id="semanticStatus" class="semantic-status fallback">Smart search is ready. For longer questions, semantic matching will load automatically.</div><section id="assistantPanel" class="assistant-panel" aria-live="polite"><div class="assistant-card"><div class="assistant-head"><b>Policy Guidance</b><span id="assistantState" class="assistant-state">GROUNDED IN SOPs</span></div><div id="assistantBody" class="assistant-body"></div><div id="assistantRefs" class="assistant-refs"></div></div></section>
 <main class="container">
 <section class="summary">
 <div class="kpi"><b id="kpiAll">—</b><span>Total KB articles</span></div>
@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.3 • Policy Answer Assistant • September 4, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.4 • Evidence-First Policy Assistant • September 4, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -63,7 +63,7 @@ function editDistance(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1}
 function queryTokens(q){return norm(q).replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(x=>x&&(!STOPWORDS.has(x)||x.length>6));}
 function variants(t){const out=new Set([t]);for(const g of SYNONYM_GROUPS){if(g.includes(t))g.forEach(x=>out.add(x));}return [...out];}
 function tokenMatch(t,text){const nt=norm(text);for(const v of variants(t)){if(nt.includes(v))return 1;}const words=nt.replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(Boolean);if(t.length>=4){for(const w of words){if(Math.abs(w.length-t.length)<=1&&editDistance(t,w)<=1)return .72;if(w.startsWith(t.slice(0,Math.max(3,t.length-1))))return .62;}}return 0;}
-function lexicalScore(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],10],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;if(covered===0||coverage<Math.min(.5,1/terms.length))return 0;return total*(.7+.3*coverage);}
+function lexicalScore(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],12],[a["Search Intent Examples"],11],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;if(covered===0||coverage<Math.min(.5,1/terms.length))return 0;return total*(.7+.3*coverage);}
 function hi(text,q){let out=esc(text);for(const t of String(q||"").trim().split(/\s+/).filter(x=>x.length>1)){const safe=t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");out=out.replace(new RegExp("("+safe+")","gi"),'<span class="highlight">$1</span>');}return out;}
 function badge(s){return s==="Official"?"official":s==="Training Guidance"?"training":s==="Internal Team SOP"?"internal":"pending";}
 function statusMatch(s){if(!state.status)return true;if(state.status==="ACTIVE")return s!=="Pending Confirmation";return s===state.status;}
@@ -85,7 +85,7 @@ let answerRunId=0;
 const ANSWER_MODEL="Xenova/flan-t5-small";
 const SEMANTIC_MODEL="Xenova/all-MiniLM-L6-v2";
 const SEMANTIC_CACHE_VERSION="skdla-semantic-v3.2-minilm-q8";
-function semanticDocText(a){return [a.Title,a.Question,a.Category,a.Keywords,a["Official Answer / SOP"],a["Step-by-Step Procedure"],a["Stop / Escalate When"]].filter(Boolean).join(". ").slice(0,5000);}
+function semanticDocText(a){return [a.Title,a["Search Intent Examples"],a.Question,a.Category,a.Keywords,a["Official Answer / SOP"],a["Step-by-Step Procedure"],a["Stop / Escalate When"]].filter(Boolean).join(". ").slice(0,5500);}
 function semanticSignature(){return KB_DATA.map(a=>a["Article ID"]+":"+a.Version).join("|");}
 function setSemanticStatus(text,cls){semanticStatus.textContent=text;semanticStatus.className="semantic-status "+(cls||"fallback");}
 function loadCachedVectors(){try{const raw=localStorage.getItem(SEMANTIC_CACHE_VERSION);if(!raw)return false;const c=JSON.parse(raw);if(c.signature!==semanticSignature()||!Array.isArray(c.items))return false;semanticVectors=new Map(c.items.map(x=>[x[0],x[1]]));return semanticVectors.size===KB_DATA.length;}catch(e){return false;}}
@@ -127,7 +127,7 @@ async function runSemanticQuery(q){
 }
 function scheduleSemantic(q){
   clearTimeout(semanticTimer);
-  if(!q||q.trim().length<7){semanticQueryScores=new Map();semanticQueryText="";return;}
+  if(!q||q.trim().length<4){semanticQueryScores=new Map();semanticQueryText="";return;}
   semanticTimer=setTimeout(async()=>{await ensureSemantic();if(semanticReady)await runSemanticQuery(q.trim());},500);
 }
 function hybridScore(a,q){
@@ -146,10 +146,10 @@ function assistantCandidates(q){
     a,
     lex:lexicalScore(a,q),
     sem:(semanticReady&&semanticQueryText===q&&semanticQueryScores.has(a["Article ID"]))?semanticQueryScores.get(a["Article ID"]):0
-  })).map(x=>({...x,rank:(x.sem*100*.78)+Math.min(35,x.lex)*.22}))
+  })).map(x=>({...x,rank:(x.sem*100*.72)+Math.min(40,x.lex)*.28}))
     .filter(x=>x.rank>0)
     .sort((x,y)=>y.rank-x.rank);
-  return items.slice(0,5);
+  return items.slice(0,8);
 }
 function showAssistantMessage(body,refs=[],mode="answer",stateText="GROUNDED IN SOPs"){
   assistantPanel.style.display="block";
@@ -169,10 +169,45 @@ function noConfirmedSop(q,candidates){
   const refs=closePending.length?closePending:candidates.slice(0,3);
   showAssistantMessage("No confirmed SOP currently provides enough guidance for this situation. Do not guess or create a new procedure. Escalate for clarification and update the Knowledge Base once an official process is confirmed.",refs,"no-sop","NO CONFIRMED SOP");
 }
+function isConfirmed(a){return a.Status==="Official"||a.Status==="Training Guidance"||a.Status==="Internal Team SOP";}
+function strongEvidence(x){
+  return (x.lex>=8) || (x.sem>=.30) || (x.rank>=25);
+}
+function chooseEvidence(candidates){
+  const strong=candidates.filter(strongEvidence);
+  const confirmed=strong.filter(x=>isConfirmed(x.a));
+  const pending=strong.filter(x=>x.a.Status==="Pending Confirmation");
+  return {strong,confirmed,pending};
+}
+function synthesizeDeterministicAnswer(q,confirmed,pending){
+  if(!confirmed.length)return "";
+  const primary=confirmed[0].a;
+  let answer=(primary["Official Answer / SOP"]||"").trim();
+  const steps=(primary["Step-by-Step Procedure"]||"").split("\n").map(x=>x.replace(/^\d+\.\s*/,"").trim()).filter(Boolean);
+  const procedural=/how|what do i do|where|when|cannot|can't|cant|missing|found|upload|enter|select|choose|process|shipping|days|schedule|doctor|rx|case/i.test(q);
+  if(procedural&&steps.length){
+    const selected=steps.slice(0,Math.min(4,steps.length)).join(" ");
+    if(selected.length>40) answer=selected;
+  }
+  // If the top confirmed SOP is a reference/exception and another confirmed SOP adds necessary context,
+  // append one concise supporting rule rather than replacing the primary answer.
+  if(confirmed.length>1){
+    const second=confirmed[1].a;
+    const secondRule=(second["Official Answer / SOP"]||"").trim();
+    const overlap=norm(answer).includes(norm(second.Title||""));
+    if(secondRule && !overlap && answer.length<520){
+      answer += " Related guidance: " + secondRule;
+    }
+  }
+  if(pending.length){
+    answer += " There is also a related Pending Confirmation item; do not treat that pending item as an official rule.";
+  }
+  return answer.slice(0,900);
+}
 function compactContext(x){
   const a=x.a;
-  const rule=String(a["Official Answer / SOP"]||"").replace(/\s+/g," ").slice(0,330);
-  const steps=String(a["Step-by-Step Procedure"]||"").replace(/\s+/g," ").slice(0,380);
+  const rule=String(a["Official Answer / SOP"]||"").replace(/\s+/g," ").slice(0,360);
+  const steps=String(a["Step-by-Step Procedure"]||"").replace(/\s+/g," ").slice(0,420);
   return "["+a["Article ID"]+" | "+(a.Title||a.Question)+" | "+a.Status+"] Rule: "+rule+" Procedure: "+steps;
 }
 async function ensureAnswerGenerator(){
@@ -190,29 +225,33 @@ async function ensureAnswerGenerator(){
   }
 }
 async function generateGroundedAnswer(q,candidates,runId){
-  const confirmed=candidates.filter(x=>x.a.Status!=="Pending Confirmation");
-  const topSem=Math.max(0,...candidates.map(x=>x.sem||0));
-  const topLex=Math.max(0,...candidates.map(x=>x.lex||0));
-  const evidence=candidates.filter(x=>x.sem>=.30||x.lex>=7).slice(0,4);
-  if(!evidence.length || (semanticReady&&topSem<.27&&topLex<6)){noConfirmedSop(q,candidates);return;}
-  if(!confirmed.length){noConfirmedSop(q,candidates);return;}
-  showAssistantMessage("Reviewing the matching SOPs and preparing grounded guidance…",evidence,"loading","ANALYZING SOPs");
-  const ready=await ensureAnswerGenerator();
-  if(runId!==answerRunId||state.query.trim()!==q)return;
-  if(!ready){
-    const first=confirmed[0];
-    const fallback=(first.a["Official Answer / SOP"]||"").trim();
-    showAssistantMessage(fallback||"Relevant SOPs were found, but the browser AI model could not load. Review the policy references below.",evidence.slice(0,4),"answer","SOP-BASED FALLBACK");
+  const ev=chooseEvidence(candidates);
+  if(!ev.strong.length){noConfirmedSop(q,candidates);return;}
+  if(!ev.confirmed.length){
+    noConfirmedSop(q,ev.pending.length?ev.pending:ev.strong);
     return;
   }
+
+  // Retrieval is authoritative. If we have confirmed evidence, never let the language model
+  // override that fact and incorrectly say that no SOP exists.
+  const deterministic=synthesizeDeterministicAnswer(q,ev.confirmed,ev.pending);
+  const refs=[...ev.confirmed.slice(0,4),...ev.pending.slice(0,2)].slice(0,5);
+  showAssistantMessage(deterministic,refs,"answer","SOP FOUND");
+
+  // Use generation only as a rewriting layer when available; its output cannot veto retrieval.
+  const ready=await ensureAnswerGenerator();
+  if(runId!==answerRunId||state.query.trim()!==q||!ready)return;
+
+  const evidence=[...ev.confirmed.slice(0,4),...ev.pending.slice(0,1)];
   const context=evidence.map(compactContext).join("\n");
   const prompt=[
     "You are the SKDLA Data Entry Policy Assistant.",
-    "Answer the user's question ONLY from the policy context below.",
-    "Do not invent steps, exceptions, names, or rules.",
-    "If the context is pending, uncertain, or does not actually answer the question, output exactly: NO_CONFIRMED_SOP",
-    "Otherwise give a concise direct answer in 2 to 4 sentences. State any stop/escalate instruction that applies.",
-    "Do not mention that you are an AI. Do not cite anything outside the supplied policies.",
+    "A confirmed SOP match has already been found. You MUST answer from the supplied policy context.",
+    "Do not say there is no SOP unless every supplied item is Pending Confirmation.",
+    "Use only facts and steps that appear in the supplied policies.",
+    "Do not invent steps, exceptions, names, shipping methods, dates, or rules.",
+    "If a Pending Confirmation item is relevant, clearly label that part as pending and do not present it as confirmed.",
+    "Give a direct answer in 2 to 5 concise sentences.",
     "",
     "USER QUESTION: "+q,
     "",
@@ -220,27 +259,26 @@ async function generateGroundedAnswer(q,candidates,runId){
     context
   ].join("\n");
   try{
-    const out=await answerGenerator(prompt,{max_new_tokens:140,do_sample:false,repetition_penalty:1.12,no_repeat_ngram_size:3});
+    const out=await answerGenerator(prompt,{max_new_tokens:170,do_sample:false,repetition_penalty:1.1,no_repeat_ngram_size:3});
     if(runId!==answerRunId||state.query.trim()!==q)return;
-    const text=String(out?.[0]?.generated_text||"").trim();
-    if(!text||text.includes("NO_CONFIRMED_SOP")){noConfirmedSop(q,evidence);return;}
-    showAssistantMessage(text,evidence.slice(0,4),"answer","GROUNDED IN SOPs");
-  }catch(e){
-    const first=confirmed[0];
-    showAssistantMessage((first.a["Official Answer / SOP"]||"").trim()||"Review the policy references below.",evidence.slice(0,4),"answer","SOP-BASED FALLBACK");
-  }
+    const generated=String(out?.[0]?.generated_text||"").trim();
+    // Never replace a valid deterministic answer with an empty/negative generator answer.
+    if(generated && !/NO_CONFIRMED_SOP|no confirmed sop|no existing sop/i.test(generated)){
+      showAssistantMessage(generated,refs,"answer","GROUNDED IN SOPs");
+    }
+  }catch(e){}
 }
 function schedulePolicyAnswer(q){
   clearTimeout(answerTimer);
   answerRunId++;
   const runId=answerRunId;
   const clean=String(q||"").trim();
-  if(clean.length<6){assistantPanel.style.display="none";return;}
+  if(clean.length<4){assistantPanel.style.display="none";return;}
   answerTimer=setTimeout(()=>{
     const candidates=assistantCandidates(clean);
     if(!candidates.length){noConfirmedSop(clean,[]);return;}
     generateGroundedAnswer(clean,candidates,runId);
-  },650);
+  },350);
 }
 function matchLabel(a,q){
   if(!q)return "";
@@ -256,7 +294,7 @@ function render(){
 }
 function init(){[...new Set(KB_DATA.map(a=>a.Category))].sort().forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;categoryFilter.appendChild(o)});document.getElementById("kpiAll").textContent=KB_DATA.length;document.getElementById("kpiOfficial").textContent=KB_DATA.filter(a=>a.Status==="Official").length;document.getElementById("kpiTraining").textContent=KB_DATA.filter(a=>a.Status==="Training Guidance").length;document.getElementById("kpiPending").textContent=KB_DATA.filter(a=>a.Status==="Pending Confirmation").length;render();}
 async function load(){try{const parts=await Promise.all(DATA_FILES.map(f=>fetch(f,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`${f}: ${r.status}`);return r.json()})));KB_DATA=parts.flat();init();}catch(e){stats.textContent="Could not load KB";errorState.textContent="Knowledge Base data could not be loaded. Please refresh the page or contact the KB owner. ("+e.message+")";errorState.style.display="block";}}
-searchInput.addEventListener("input",e=>{state.query=e.target.value;semanticQueryScores=new Map();semanticQueryText="";answerRunId++;clearTimeout(answerTimer);render();if(state.query.trim().length>=6){showAssistantMessage("Finding the most relevant SOPs for your question…",[],"loading","SEARCHING POLICIES");}else{assistantPanel.style.display="none";}scheduleSemantic(state.query);if(semanticFailed) schedulePolicyAnswer(state.query.trim());});
+searchInput.addEventListener("input",e=>{state.query=e.target.value;semanticQueryScores=new Map();semanticQueryText="";answerRunId++;clearTimeout(answerTimer);render();if(state.query.trim().length>=4){showAssistantMessage("Finding the most relevant SOPs for your question…",[],"loading","SEARCHING POLICIES");schedulePolicyAnswer(state.query.trim());}else{assistantPanel.style.display="none";}scheduleSemantic(state.query);});
 categoryFilter.addEventListener("change",e=>{state.category=e.target.value;render();});
 document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.status=b.dataset.status;render();}));
 document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==searchInput){e.preventDefault();searchInput.focus();}});
