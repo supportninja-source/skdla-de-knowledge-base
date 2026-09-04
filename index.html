@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.7 • Reliable Intent-Aware SOP Assistant • September 4, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.8 • Yareli Due-Date Procedure Added • September 5, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -101,7 +101,7 @@ function intentBoost(a,q){
   if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
   if(id==="KB-080"&&has(/implant/))b+=24;
   if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
-  if(id==="KB-093"&&has(/(two|2).*(day|days).*(short)|(short).*(two|2).*(day|days)/))b+=30;
+  if(id==="KB-093"&&has(/(two|2).*(day|days).*(short|shorted|shortage)|(short|shorted|shortage).*(two|2).*(day|days)/))b+=34;
   if(id==="KB-092"&&has(/(one|1).*(day|days).*(short)|(short).*(one|1).*(day|days)/))b+=30;
   return b;
 }
@@ -254,8 +254,8 @@ function detectIntent(q){
   if(has(/\b(screw retained|screwretained)\b/)) return "oc_route";
   if(has(/\bimplant\b/)) return "oc_route";
 
-  if(has(/\b(one|1)\b/) && has(/\b(day|days)\b/) && has(/\bshort\b/)) return "one_day_short";
-  if(has(/\b(two|2)\b/) && has(/\b(day|days)\b/) && has(/\bshort\b/)) return "two_day_short";
+  if(has(/\b(one|1)\b/) && has(/\b(day|days)\b/) && has(/\b(short|shorted|shortage)\b/)) return "one_day_short";
+  if(has(/\b(two|2)\b/) && has(/\b(day|days)\b/) && has(/\b(short|shorted|shortage)\b/)) return "two_day_short";
 
   if(has(/\b(more than five|over five|5 days|five days)\b/) && has(/\b(due|ship|shipping|schedule)\b/)) return "five_day_due";
 
@@ -415,7 +415,10 @@ function composeIntentAnswer(q,intent){
     return {text:"For an OCIN case whose generated schedule is exactly one day short, the confirmed guidance allows the case to proceed. Continue the required notes, quality checks, and save process as applicable. Do not assume this exception applies to other types of schedule shortages or to Rush orders unless separately confirmed.",ids:["KB-092","P-005"]};
   }
   if(intent==="two_day_short"){
-    return {text:"If an OCIN schedule is two days short, stop normal processing and route or forward the case to Orange County because a call is required. Do not force the schedule or simply complete the case as if the shortage were acceptable.",ids:["KB-093"]};
+    return {
+      text:"If the delivery date is not more than five days away and ABS says the schedule will be short by two days, go to the Due Date selection in ABS and click the square \"No due date\" button. ABS will create the preferred delivery due date. After that, click Generate to create the new schedule, then add this note: \"Yareli to call for new delivery date of [enter the delivery date set by ABS].\" Use this procedure only for the five-days-or-less, two-days-short scenario; if the delivery date is more than five days away, follow the separate more-than-five-days due-date SOP.",
+      ids:["KB-093","KB-094"]
+    };
   }
   if(intent==="five_day_due"){
     return {text:"If ABS indicates that the OCIN shipping or due date must be more than five days from today, use the calendar-offered date as the proposed new due date, document the need for that new due date in the case notes, and route or escalate the case for the required call. Do not independently overwrite the doctor's requested due date without the approved process.",ids:["KB-094"]};
