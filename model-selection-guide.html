@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Incisive Model Selection Visual Guide | SKDLA Data Entry</title>
+<style>
+:root{--navy:#10385f;--navy2:#0b2743;--bg:#f3f6f9;--line:#d7e0e9;--muted:#65758b;--yellow:#ffe34f}
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:#1f2937}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:38px 20px}header>div,main{max-width:1100px;margin:auto}
+h1{margin:6px 0;font-size:clamp(30px,5vw,46px)}.sub{max-width:900px;line-height:1.6;opacity:.92}
+main{padding:26px 20px 56px}.back{display:inline-block;margin-bottom:18px;color:#1f6aa5;text-decoration:none;font-weight:700}
+.notice{background:#fff7db;border:1px solid #eed170;border-radius:12px;padding:14px 16px;margin-bottom:18px;line-height:1.55}
+.rule{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.rule h2{margin:0 0 8px;color:#10253a}.rule p,.rule li{line-height:1.62}.ranges{display:grid;grid-template-columns:1fr 1fr;gap:12px}.range{background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:12px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.card h3{margin:0 0 6px;color:#10253a}.card p{margin:0 0 10px;line-height:1.55;color:#45566a}.map{width:100%;height:auto;background:#fff;border:1px solid #e3e9ef;border-radius:10px}
+.legend{font-size:12px;color:var(--muted);margin-top:8px}.yellow{display:inline-block;width:12px;height:12px;background:var(--yellow);border:1px solid #9b8700;border-radius:3px;vertical-align:-2px;margin-right:4px}
+table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border:1px solid var(--line);padding:10px;text-align:left}th{background:#edf4fa;color:#315e86}
+.footer{font-size:12px;color:var(--muted);margin-top:22px}@media(max-width:760px){.gallery,.ranges{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div><div style="font-size:12px;letter-spacing:.12em;font-weight:800">SKDLA • DATA ENTRY / NINJA TEAM</div><h1>Incisive Model Selection Visual Guide</h1><p class="sub">Visual tooth-range and model-selection reference for Incisive cases. Incisive cases do not use Mini models; use Quadrant or Full Arch according to the rules below and any applicable Doctor Preference/account-specific instruction.</p></div></header>
+<main>
+<a class="back" href="./index.html">← Back to Knowledge Base</a>
+<div class="notice"><b>Core Incisive rule:</b> Do not select Mini. Use <b>Quadrant</b> or <b>Full Arch</b>. Always check Doctor Preferences and explicit account-specific rules before finalizing the model.</div>
+
+<section class="rule">
+<h2>Tooth ranges</h2>
+<div class="ranges">
+<div class="range"><b>Anterior teeth</b><br>6–11 and 22–27</div>
+<div class="range"><b>Posterior teeth</b><br>1–5, 12–16, 17–21, and 28–32</div>
+</div>
+<table>
+<tr><th>Scenario</th><th>Model</th></tr>
+<tr><td>Incisive anterior/incisor case</td><td><b>Full Arch</b></td></tr>
+<tr><td>Two teeth: anterior + posterior</td><td><b>Full Arch</b></td></tr>
+<tr><td>Three posterior teeth on opposing sides</td><td><b>Full Arch</b></td></tr>
+<tr><td>Two posterior teeth on the same arch / next to each other</td><td><b>Quadrant</b></td></tr>
+</table>
+</section>
+
+<section class="gallery">
+<div class="card"><h3>Anterior tooth ranges</h3><p>Teeth 6–11 and 22–27 are anterior. For an Incisive anterior/incisor case, use Full Arch.</p><svg id="map-anterior" class="map" viewBox="0 0 520 420"></svg><div class="legend"><span class="yellow"></span>Highlighted teeth from the supplied guide</div></div>
+<div class="card"><h3>Anterior + posterior two-tooth example</h3><p>If the Rx requests two teeth and the combination includes anterior and posterior as shown in the guide, select Full Arch.</p><svg id="map-mixed" class="map" viewBox="0 0 520 420"></svg><div class="legend"><span class="yellow"></span>Example highlights: teeth 9 and 20</div></div>
+<div class="card"><h3>Three posterior teeth on opposing sides</h3><p>If three posterior teeth are positioned on opposing sides, select Full Arch.</p><svg id="map-three" class="map" viewBox="0 0 520 420"></svg><div class="legend"><span class="yellow"></span>Example highlights: teeth 3, 4, and 13</div></div>
+<div class="card"><h3>Two posterior teeth on the same arch</h3><p>If two posterior teeth are on the same arch / next to each other, select Quadrant.</p><svg id="map-two" class="map" viewBox="0 0 520 420"></svg><div class="legend"><span class="yellow"></span>Example highlights: teeth 3 and 4</div></div>
+</section>
+
+<p class="footer">Source basis: uploaded Incisive model-selection guide. The source also notes OCIN11553 as a Full-model account and states that Doctor Preferences may override a general default. The source contains the phrase “Full charge models” in one example; the surrounding guide identifies the model as Full Arch.</p>
+</main>
+<script>
+function pt(cx,cy,rx,ry,angle){const r=angle*Math.PI/180;return [cx+rx*Math.cos(r),cy+ry*Math.sin(r)]}
+function toothPositions(){
+  const p={};
+  for(let i=1;i<=16;i++){const a=200+(i-1)*(140/15);p[i]=pt(260,185,205,125,a)}
+  for(let i=17;i<=32;i++){const a=20+(i-17)*(140/15);p[i]=pt(260,235,205,125,a)}
+  return p;
+}
+const POS=toothPositions();
+function draw(id,highlights){
+  const svg=document.getElementById(id),ns="http://www.w3.org/2000/svg";
+  const title=document.createElementNS(ns,"text");title.setAttribute("x","260");title.setAttribute("y","30");title.setAttribute("text-anchor","middle");title.setAttribute("font-size","14");title.setAttribute("fill","#65758b");title.textContent="ABS Tooth Selection Reference";svg.appendChild(title);
+  for(let n=1;n<=32;n++){
+    const [x,y]=POS[n],g=document.createElementNS(ns,"g");
+    const c=document.createElementNS(ns,"circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r","18");c.setAttribute("fill",highlights.includes(n)?"#ffe34f":"#ffffff");c.setAttribute("stroke",highlights.includes(n)?"#9b8700":"#8796a5");c.setAttribute("stroke-width",highlights.includes(n)?"2":"1.3");g.appendChild(c);
+    const t=document.createElementNS(ns,"text");t.setAttribute("x",x);t.setAttribute("y",y+5);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","12");t.setAttribute("font-weight",highlights.includes(n)?"800":"600");t.setAttribute("fill","#24384b");t.textContent=n;g.appendChild(t);svg.appendChild(g);
+  }
+  const top=document.createElementNS(ns,"path");top.setAttribute("d","M55 185 Q260 18 465 185");top.setAttribute("fill","none");top.setAttribute("stroke","#d7e0e9");top.setAttribute("stroke-width","2");svg.insertBefore(top,svg.children[1]||null);
+  const bottom=document.createElementNS(ns,"path");bottom.setAttribute("d","M465 235 Q260 402 55 235");bottom.setAttribute("fill","none");bottom.setAttribute("stroke","#d7e0e9");bottom.setAttribute("stroke-width","2");svg.insertBefore(bottom,svg.children[1]||null);
+}
+draw("map-anterior",[6,7,8,9,10,11,22,23,24,25,26,27]);
+draw("map-mixed",[9,20]);
+draw("map-three",[3,4,13]);
+draw("map-two",[3,4]);
+</script>
+</body></html>
