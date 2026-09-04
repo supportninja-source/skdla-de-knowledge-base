@@ -9,9 +9,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the general portal rule outside 3Shape?",
+    "Step-by-Step Procedure": "1. Open the pending/current case in the source portal.\n2. Open the Rx/order document.\n3. Print/save it as a PDF and verify the file is stored.\n4. Only then change the portal status to accepted/processed using the current portal control.\n5. If the case moves out of view, use the saved PDF plus tracker/ABS to continue processing.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-021",
@@ -23,9 +26,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the iTero scraping workflow?",
+    "Step-by-Step Procedure": "1. Open iTero and locate the current/pending case.\n2. Open the Rx/order information and print/save the Rx PDF.\n3. Verify the Rx is saved.\n4. Download the scan files required for the case.\n5. If the case disappears from the current view, check tracker/ABS before printing/downloading it again.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-022",
@@ -37,9 +43,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "Exact portal status wording was noted as not fully confirmed in training.",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the Medit scraping workflow?",
+    "Step-by-Step Procedure": "1. Open Medit and locate the pending case.\n2. Open the order/Rx and save/print it as a PDF.\n3. Verify the PDF is stored.\n4. Return to Medit and change the case to the accepted/processed state shown in the current portal UI.\n5. If the exact status control is unclear, stop and verify current guidance rather than guessing.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-023",
@@ -51,9 +60,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "The exact accept control was not visible during training; follow current portal UI.",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the DS Core scraping workflow?",
+    "Step-by-Step Procedure": "1. Open DS Core > All Orders.\n2. Locate the pending order.\n3. Open the order and save/print the Rx as PDF.\n4. Verify the PDF is stored.\n5. Use the current portal control to accept/process the order when available.\n6. If the control is not visible or the workflow has changed, escalate for current portal guidance.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-024",
@@ -65,9 +77,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the Shiny scraping workflow?",
+    "Step-by-Step Procedure": "1. Open Shiny and locate a case marked red Pending.\n2. Open and save/print the Rx/order PDF.\n3. Verify the file is safely stored.\n4. Change the status from Pending to Producing.\n5. Use Producing as the indicator that the order has already been handled/downloaded.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-025",
@@ -79,9 +94,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "Portal walkthrough"
+    "Source Basis": "Portal walkthrough",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the Shawman scraping workflow?",
+    "Step-by-Step Procedure": "1. Open the Shawman order.\n2. Go to Files.\n3. Download the Rx/source file and save/print it as PDF.\n4. Verify the PDF is stored.\n5. Return to the order and accept/process it.\n6. Confirm the case shows In Progress when accepted.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-030",
@@ -93,9 +111,12 @@
     "Confirmed By": "Team operating process",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "Examples in production chat used explicit 'finished through X; continue with Y' handoffs.",
-    "Source Basis": "Team scraping workflow"
+    "Source Basis": "Team scraping workflow",
+    "Purpose": "Provide a consistent Data Entry procedure for: How should Ninjas coordinate portal scraping?",
+    "Step-by-Step Procedure": "1. Check the team handoff/chat to identify the current starting point.\n2. Only one Ninja should actively scrape the shared sequence at a time.\n3. Begin from the exact patient/order named in the handoff.\n4. Continue sequentially and avoid overlap.\n5. When you stop, announce the last completed patient and the next patient/order for the next scraper.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-031",
@@ -107,9 +128,12 @@
     "Confirmed By": "Team operating process",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "Portal training + production practice"
+    "Source Basis": "Portal training + production practice",
+    "Purpose": "Provide a consistent Data Entry procedure for: Why must scraping handoffs be explicit?",
+    "Step-by-Step Procedure": "1. Review the case/tool context for: Why must scraping handoffs be explicit?\n2. Multiple people can access portals simultaneously.\n3. Without a clear handoff, two Ninjas can download the same case or a case can be skipped.\n4. Always state the ending point and the next starting patient/order when transferring scraping responsibility.\n5. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n6. If the situation is unclear or would require guessing, stop and escalate.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-040",
@@ -121,9 +145,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "ABS Case Entry Process Training"
+    "Source Basis": "ABS Case Entry Process Training",
+    "Purpose": "Provide a consistent Data Entry procedure for: What ABS windows should be open before case entry?",
+    "Step-by-Step Procedure": "1. Log in to ABS.\n2. Open New Order for case creation.\n3. Open Case Inquiry for duplicate/history checks.\n4. Open Case Photos for Rx/reference upload after the case number is created.\n5. Keep these windows available while processing so no required verification/document step is skipped.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-041",
@@ -135,9 +162,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "Do not confuse this with duplicate-looking 3Shape scan files.",
-    "Source Basis": "ABS Case Entry Process Training"
+    "Source Basis": "ABS Case Entry Process Training",
+    "Purpose": "Provide a consistent Data Entry procedure for: What duplicate check is required before creating a new ABS case?",
+    "Step-by-Step Procedure": "1. Open Case Inquiry before creating a new case.\n2. Search using the patient name and verify the doctor/practice.\n3. Review prior case history and compare tooth/restoration information.\n4. If the same tooth/restoration appears to exist, treat it as a possible duplicate/remake and stop for clarification if unclear.\n5. If the history is for a different tooth and the new Rx is valid, continue as a new case.\n6. Only click New after the duplicate check is complete.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-042",
@@ -149,9 +179,12 @@
     "Confirmed By": "Esther",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "This article reconciles two different yellow indicators documented in training/support.",
-    "Source Basis": "Training + Sep 2026 Support Q&A"
+    "Source Basis": "Training + Sep 2026 Support Q&A",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the difference between a yellow duplicate pop-up and a yellow-highlighted office?",
+    "Step-by-Step Procedure": "1. Review the case/tool context for: What is the difference between a yellow duplicate pop-up and a yellow-highlighted office?\n2. A yellow duplicate/history pop-up during case verification can indicate existing patient/doctor history and should trigger a duplicate check.\n3. Separately, a yellow-highlighted office/account may indicate the office owes money; Support confirmed that this billing highlight does not by itself stop Data Entry.\n4. Treat the two indicators according to their context.\n5. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n6. If the situation is unclear or would require guessing, stop and escalate.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-043",
@@ -163,9 +196,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "ABS Case Entry Process Training"
+    "Source Basis": "ABS Case Entry Process Training",
+    "Purpose": "Provide a consistent Data Entry procedure for: How do you start a confirmed new case in ABS?",
+    "Step-by-Step Procedure": "1. Complete the eligibility and duplicate checks first.\n2. In New Order, click New.\n3. Enter/verify doctor and practice information.\n4. Enter the patient name using the approved naming rules.\n5. Review the Rx and enter requested due date, shade, tooth, product/material, model, and Digital workflow.\n6. Add required notes.\n7. Generate the schedule and resolve any routing/schedule exception.\n8. Continue and Save to generate the ABS case number.\n9. Upload the Rx in Case Photos and complete final QC.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-044",
@@ -177,9 +213,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "ABS Case Entry Process Training"
+    "Source Basis": "ABS Case Entry Process Training",
+    "Purpose": "Provide a consistent Data Entry procedure for: What if ABS crashes before a case number is generated?",
+    "Step-by-Step Procedure": "1. Stop if ABS crashes before you see a confirmed case number.\n2. Reopen/restart ABS.\n3. Use Case Inquiry to check whether a case was actually created.\n4. If no case exists, re-enter the case from the beginning.\n5. If a case exists, continue from that case instead of creating a duplicate.\n6. Do not assume a save succeeded without a case number or Case Inquiry confirmation.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-045",
@@ -191,9 +230,12 @@
     "Confirmed By": "Esther / Team Lead",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "Do not repeatedly force a save if the case may become inconsistent.",
-    "Source Basis": "Sep 2026 support chat"
+    "Source Basis": "Sep 2026 support chat",
+    "Purpose": "Provide a consistent Data Entry procedure for: What is the first troubleshooting step for common ABS UI errors?",
+    "Step-by-Step Procedure": "1. Pause the current entry when an ABS option/UI element is missing or incorrect.\n2. Reopen/restart ABS.\n3. Reopen the case and check whether the option has returned.\n4. If it is available, continue and reverify the affected field.\n5. If it remains unavailable or data may be inconsistent, stop and escalate rather than substituting an unapproved option.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   },
   {
     "Article ID": "KB-050",
@@ -205,8 +247,11 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "2.0",
+    "Version": "3.0",
     "Notes": "",
-    "Source Basis": "ABS Case Entry Process Training"
+    "Source Basis": "ABS Case Entry Process Training",
+    "Purpose": "Provide a consistent Data Entry procedure for: What doctor information should be verified?",
+    "Step-by-Step Procedure": "1. Open the Rx and identify the doctor/practice.\n2. Compare the doctor/practice with 3Shape and available office/address information.\n3. In ABS, select the matching doctor and verify the practice/ship-to information when applicable.\n4. Move away from selection controls to avoid accidental scrolling changes.\n5. Recheck the doctor before saving.\n6. If the doctor cannot be reliably matched, stop and escalate.",
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
   }
 ]
