@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.9 • Anterior/Incisor Full Arch Rule Added • September 5, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.10 • Aspen Scheduling Rule Added • September 5, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -99,6 +99,7 @@ function intentBoost(a,q){
   if(id==="KB-091"&&has(/(how many|days|turnaround|processing|duration|how long).*(zirconia|workflow|process)|(zirconia|workflow|process).*(how many|days|turnaround|processing|duration|how long)/))b+=28;
   if(id==="KB-051"&&has(/(two|multiple|more than one).*(doctor|dentist)|(doctor|dentist).*(two|multiple|more than one)/))b+=30;
   if(id==="KB-079"&&has(/(anterior|incisor|incisive|front tooth).*(model|full arch)|(model|full arch).*(anterior|incisor|incisive|front tooth)/))b+=34;
+  if(id==="KB-096"&&has(/aspen/)&&has(/(short|shorted|shortage|schedule|day|days)/))b+=38;
   if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
   if(id==="KB-080"&&has(/implant/))b+=24;
   if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
@@ -278,6 +279,10 @@ function detectIntent(q){
 
   if(has(/\b(anterior|incisor|incisive|front tooth)\b/) && has(/\b(model|full arch|which model|what model|select)\b/)) return "anterior_model";
 
+  if(has(/\baspen\b/) && has(/\b(one|1)\b/) && has(/\b(day|days)\b/) && has(/\b(short|shorted|shortage)\b/)) return "aspen_one_day_short";
+  if(has(/\baspen\b/) && has(/\b(two|2|more than two|more than 2|three|3|four|4)\b/) && has(/\b(day|days)\b/) && has(/\b(short|shorted|shortage)\b/)) return "aspen_two_plus_short";
+  if(has(/\baspen\b/) && has(/\b(short|shorted|shortage|schedule)\b/)) return "aspen_schedule";
+
   return "generic";
 }
 function byId(id){return KB_DATA.find(a=>a["Article ID"]===id);}
@@ -452,6 +457,15 @@ function composeIntentAnswer(q,intent){
   }
   if(intent==="anterior_model"){
     return {text:"If the case is anterior and involves an incisor, select the Full Arch model in ABS. Recheck the model before generating the schedule. If the case involves a different tooth-range scenario or a doctor/account-specific preference conflicts with this rule, stop and verify the applicable guidance instead of guessing.",ids:["KB-079","KB-073","P-008"]};
+  }
+  if(intent==="aspen_one_day_short"){
+    return {text:"If the case is Aspen and the ABS-generated schedule is exactly one day short, you may proceed with the case under the confirmed Aspen guidance. Continue the normal required notes, quality checks, and save process. This one-day exception is specific to Aspen and should not be used for a different scheduling shortage.",ids:["KB-096","KB-018","KB-090"]};
+  }
+  if(intent==="aspen_two_plus_short"){
+    return {text:"If the case is Aspen and the ABS-generated schedule is short by two days or more, do not proceed normally. Stop processing and escalate the case for review. Do not use the OCIN two-day-short due-date procedure for Aspen unless newer confirmed guidance specifically instructs you to do so.",ids:["KB-096","KB-018","KB-090"]};
+  }
+  if(intent==="aspen_schedule"){
+    return {text:"For Aspen scheduling, an ABS-generated schedule that is exactly one day short may proceed. If it is short by two days or more, stop normal processing and escalate the case for review. If the Aspen schedule issue is different from those two scenarios, escalate rather than guessing.",ids:["KB-096","KB-018","KB-090"]};
   }
   return null;
 }
