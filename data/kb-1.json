@@ -242,13 +242,14 @@
     "Status": "Training Guidance",
     "Confirmed By": "Client-led case-entry training",
     "Effective Date": "",
-    "Last Updated": "2026-09-04",
-    "Version": "3.1",
-    "Notes": "Use current account labels if ABS naming changes.",
+    "Last Updated": "2026-09-05",
+    "Version": "3.2",
+    "Notes": "Use current account labels if ABS naming changes. For Aspen schedule shortages, follow KB-096: exactly 1 day short may proceed; 2 days or more short must be escalated.",
     "Source Basis": "Live case-entry practice",
     "Purpose": "Provide a consistent Data Entry procedure for: How are Aspen Dental accounts identified and matched?",
     "Step-by-Step Procedure": "1. Identify the Aspen-style A-number on the Rx/doctor information.\n2. Search the patient/case in 3Shape.\n3. Use the collaborator/drop-down information to identify the Aspen office number.\n4. In ABS, select the matching Aspen/OCASP office entry.\n5. Do not select Beacon for this workflow.\n6. If the Aspen office still cannot be matched, stop and escalate rather than selecting an unrelated office.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Aspen Dental Account Identification and Matching"
+    "Title": "Aspen Dental Account Identification and Matching",
+    "Search Intent Examples": "How do I identify an Aspen office? Which Aspen/OCASP office should I choose? Aspen is short by 1 day or 2 days; what scheduling rule applies?"
   }
 ]
