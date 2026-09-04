@@ -15,7 +15,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What if the doctor is identified in case notes/comments?",
     "Step-by-Step Procedure": "1. Review Notes/Comments for doctor-identifying information.\n2. Compare that doctor name with the Rx, practice/address, and 3Shape information.\n3. If the information reliably points to the same doctor, use that doctor in ABS.\n4. If the match is not reliable, do not select an unrelated doctor.\n5. Route/escalate for clarification.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Doctor Identification from Notes and Comments"
+    "Title": "Doctor Identification from Notes and Comments",
+    "Search Intent Examples": "There are two doctor names in the notes. How do I know which doctor to select? The doctor is mentioned in comments."
   },
   {
     "Article ID": "KB-052",
@@ -87,7 +88,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should be reviewed on the Rx before encoding?",
     "Step-by-Step Procedure": "1. Open the Rx before entering case details.\n2. Identify the doctor/practice.\n3. Identify the requested restoration/treatment.\n4. Confirm the tooth number and shade.\n5. Confirm the requested due date.\n6. Review special instructions, preferences, implant/Screw Retained indicators, routing notes, and model/product clues.\n7. Use the Rx as the primary case-specific instruction source and escalate unresolved inconsistencies.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Rx Review Requirements Before Encoding"
+    "Title": "Rx Review Requirements Before Encoding",
+    "Search Intent Examples": "What do I need to check on the Rx? What information should I review before entering a case?"
   },
   {
     "Article ID": "KB-061",
@@ -123,7 +125,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What document must be uploaded to the ABS case?",
     "Step-by-Step Procedure": "1. After the ABS case number is generated, open Case Photos.\n2. Locate the correct case using the case number/patient details.\n3. Upload the actual Rx form PDF.\n4. Do not use the Workticket alone as a substitute for the Rx.\n5. Verify the Rx is visible and attached to the correct case before completion.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Required Rx Document Upload"
+    "Title": "Required Rx Document Upload",
+    "Search Intent Examples": "How do I upload the Rx? Where do I attach the prescription? What document must be uploaded? Is the Workticket enough?"
   },
   {
     "Article ID": "KB-063",
