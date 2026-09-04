@@ -31,7 +31,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <h1>Data Entry Knowledge Base</h1>
 <p class="subtitle">Search step-by-step SKDLA Data Entry SOPs for portal scraping, ABS case entry, Orange County routing, Rx/document requirements, scheduling, troubleshooting, and quality control. The retired case-designation tracker has been removed. ClearPath assignment instructions will be added once the official steps are provided.</p>
 </div></header>
-<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Ask anything about the process — e.g., how do I enter a case in ABS, what shipping do we use, doctor not found..." aria-label="Search knowledge base"></div></div><div id="semanticStatus" class="semantic-status fallback">Smart search is ready. For longer questions, semantic matching will load automatically.</div><section id="assistantPanel" class="assistant-panel" aria-live="polite"><div class="assistant-card"><div class="assistant-head"><div><b>AI Answer</b><div style="font-size:11px;color:#65758b;margin-top:2px">Answer synthesized from the current SKDLA SOP library</div></div><span id="assistantState" class="assistant-state">GROUNDED IN SOPs</span></div><div id="assistantBody" class="assistant-body"></div><div id="assistantRefs" class="assistant-refs"></div></div></section>
+<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Ask anything about the process — e.g., how do I enter a case in ABS, what shipping do we use, doctor not found..." aria-label="Search knowledge base"></div></div><div id="semanticStatus" class="semantic-status fallback">Smart search is ready. For longer questions, semantic matching will load automatically.</div><section id="assistantPanel" class="assistant-panel" aria-live="polite"><div class="assistant-card"><div class="assistant-head"><div><b>AI Answer</b><div style="font-size:11px;color:#65758b;margin-top:2px">Direct answer synthesized from the current SKDLA SOP library</div></div><span id="assistantState" class="assistant-state">GROUNDED IN SOPs</span></div><div id="assistantBody" class="assistant-body"></div><div id="assistantRefs" class="assistant-refs"></div></div></section>
 <main class="container">
 <section class="summary">
 <div class="kpi"><b id="kpiAll">—</b><span>Total KB articles</span></div>
@@ -49,18 +49,41 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.6 • Human-Style SOP Assistant • September 4, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.7 • Reliable Intent-Aware SOP Assistant • September 4, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
 const state={query:"",category:"",status:"ACTIVE"};
 const searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),results=document.getElementById("results"),stats=document.getElementById("stats"),empty=document.getElementById("emptyState"),errorState=document.getElementById("errorState"),semanticStatus=document.getElementById("semanticStatus"),assistantPanel=document.getElementById("assistantPanel"),assistantBody=document.getElementById("assistantBody"),assistantRefs=document.getElementById("assistantRefs"),assistantState=document.getElementById("assistantState");
 function esc(s){return String(s??"").replace(/[&<>"\']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[m]));}
-function norm(s){return String(s??"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+function norm(s){
+    return String(s??"")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g,"")
+      .replace(/[’‘‛`´]/g,"'")
+      .replace(/\bcouldn't\b/g,"could not")
+      .replace(/\bcan't\b/g,"cannot")
+      .replace(/\bcant\b/g,"cannot")
+      .replace(/\bwon't\b/g,"will not")
+      .replace(/\bdidn't\b/g,"did not")
+      .replace(/\bdoesn't\b/g,"does not")
+      .replace(/\bdon't\b/g,"do not")
+      .replace(/\bisn't\b/g,"is not")
+      .replace(/\baren't\b/g,"are not")
+      .replace(/\bwasn't\b/g,"was not")
+      .replace(/\bweren't\b/g,"were not")
+      .replace(/\bshouldn't\b/g,"should not")
+      .replace(/\bwouldn't\b/g,"would not")
+      .replace(/\bcouldnt\b/g,"could not")
+      .replace(/[^a-z0-9]+/g," ")
+      .replace(/\s+/g," ")
+      .trim();
+  }
 const STOPWORDS=new Set(["what","when","where","which","who","why","how","do","does","did","can","could","should","would","the","a","an","to","of","for","in","on","at","with","and","or","is","are","was","were","be","been","being","i","we","they","he","she","it","my","our","their","this","that","these","those","please","help","need","want","case","cases"]);
 const SYNONYM_GROUPS=[["rx","prescription","script","order","workorder","work","ticket"],["doctor","dentist","dr","provider"],["oc","orange","county","orangecounty"],["clearpath","claim","grab","assign","assignment","assigned","queue"],["upload","attach","attachment","add","document","file"],["duplicate","dupe","remake","existing","history"],["implant","screw","retained","screwretained"],["due","date","dd","deadline","schedule","scheduling"],["short","rush","urgent","expedite"],["model","mini","quadrant","full","arch","fullarch"],["digital","analog","workflow"],["shade","color","colour"],["patient","name","firstname","lastname","middle"],["error","issue","problem","missing","cant","cannot","wont","failed","failure","crash"],["3shape","shape","portal"],["aspen","ocasp","beacon"],["photo","photos","picture","pictures","casephotos"],["shipping","ship","carrier","delivery","ups"],["turnaround","processing","process","days","duration","timeline"]];
 function editDistance(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)d[i][0]=i;for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
-function queryTokens(q){return norm(q).replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(x=>x&&(!STOPWORDS.has(x)||x.length>6));}
+function queryTokens(q){return norm(q).split(/\s+/).filter(x=>x&&(!STOPWORDS.has(x)||x.length>6));}
 function variants(t){const out=new Set([t]);for(const g of SYNONYM_GROUPS){if(g.includes(t))g.forEach(x=>out.add(x));}return [...out];}
 function tokenMatch(t,text){const nt=norm(text);for(const v of variants(t)){if(nt.includes(v))return 1;}const words=nt.replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(Boolean);if(t.length>=4){for(const w of words){if(Math.abs(w.length-t.length)<=1&&editDistance(t,w)<=1)return .72;if(w.startsWith(t.slice(0,Math.max(3,t.length-1))))return .62;}}return 0;}
 function intentBoost(a,q){
@@ -210,19 +233,48 @@ function questionType(q){
 }
 function detectIntent(q){
   const n=norm(q);
-  if(/(rx|prescription).*(upload|attach|enter|add)|(upload|attach|enter|add).*(rx|prescription)/.test(n))return "rx_upload";
-  if(/(enter|encode|create|start|input).*(abs|case)|(abs).*(enter|encode|create|start|input)/.test(n))return "abs_entry";
-  if(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find|couldnt find)|(not found|missing|not showing|cannot find|cant find|couldnt find).*(doctor|dentist)/.test(n))return "doctor_missing";
-  if(/(two|multiple|more than one|several).*(doctor|dentist)|(doctor|dentist).*(two|multiple|more than one|several)/.test(n))return "multiple_doctors";
-  if(/shipping|carrier|ups|delivery method|ship method/.test(n))return "shipping";
-  if(/(how many|how long|turnaround|processing|duration|days).*(zirconia|workflow|case|process)|(zirconia|workflow|case|process).*(how many|how long|turnaround|processing|duration|days)/.test(n))return "duration";
-  if(/duplicate|remake|already exist|existing case|case history/.test(n))return "duplicate";
-  if(/implant|screw.*retained|retained.*screw/.test(n))return "oc_route";
-  if(/(one|1).*(day|days).*(short)|(short).*(one|1).*(day|days)/.test(n))return "one_day_short";
-  if(/(two|2).*(day|days).*(short)|(short).*(two|2).*(day|days)/.test(n))return "two_day_short";
-  if(/more than five|over five|5 days|five days/.test(n)&&/due|ship|schedule/.test(n))return "five_day_due";
-  if(/digital.*(missing|not showing|cannot find|cant find)|(missing|not showing).*(digital)/.test(n))return "digital_missing";
-  if(/mini.*model.*(missing|not showing|cannot find|cant find)|(missing|not showing).*(mini.*model)/.test(n))return "mini_missing";
+  const has=(re)=>re.test(n);
+
+  if(has(/\b(rx|prescription)\b/) && has(/\b(upload|attach|enter|add|put|save|insert)\b/)) return "rx_upload";
+
+  if(has(/\b(abs)\b/) && has(/\b(enter|encode|create|start|input|add|make)\b/) && has(/\b(case|order|rx|prescription)\b/)) return "abs_entry";
+
+  if(has(/\b(doctor|dentist|provider)\b/) &&
+     has(/\b(not found|missing|not showing|cannot find|could not find|unable to find|not available|does not appear|is not there)\b/)) return "doctor_missing";
+
+  if(has(/\b(two|2|multiple|several|more than one)\b/) && has(/\b(doctor|doctors|dentist|provider)\b/)) return "multiple_doctors";
+
+  if(has(/\b(shipping|ship|carrier|ups|delivery)\b/) && !has(/\b(days|how long|duration|turnaround|processing)\b/)) return "shipping";
+
+  if(has(/\b(how many|how long|turnaround|processing|duration|days|timeline)\b/) &&
+     has(/\b(zirconia|workflow|case|process|production)\b/)) return "duration";
+
+  if(has(/\b(duplicate|dupe|remake|already exists|existing case|case history|prior case)\b/)) return "duplicate";
+
+  if(has(/\b(screw retained|screwretained)\b/)) return "oc_route";
+  if(has(/\bimplant\b/)) return "oc_route";
+
+  if(has(/\b(one|1)\b/) && has(/\b(day|days)\b/) && has(/\bshort\b/)) return "one_day_short";
+  if(has(/\b(two|2)\b/) && has(/\b(day|days)\b/) && has(/\bshort\b/)) return "two_day_short";
+
+  if(has(/\b(more than five|over five|5 days|five days)\b/) && has(/\b(due|ship|shipping|schedule)\b/)) return "five_day_due";
+
+  if(has(/\bdigital\b/) && has(/\b(missing|not showing|cannot find|could not find|not available|does not appear)\b/)) return "digital_missing";
+
+  if(has(/\bmini model\b/) && has(/\b(missing|not showing|cannot find|could not find|not available|does not appear)\b/)) return "mini_missing";
+
+  if(has(/\b(shade|color|colour)\b/) && has(/\b(enter|input|select|use|what|how)\b/)) return "shade_entry";
+
+  if(has(/\b(due date|dd)\b/) && has(/\b(enter|input|use|what|how|requested)\b/)) return "due_date_entry";
+
+  if(has(/\b(tooth|tooth number)\b/) && has(/\b(select|enter|choose|input|how)\b/)) return "tooth_selection";
+
+  if(has(/\b(case notes|notes|comment|comments)\b/) && has(/\b(enter|include|write|add|what|how)\b/)) return "case_notes";
+
+  if(has(/\b(save|case number|number)\b/) && has(/\b(abs|case)\b/)) return "save_case";
+
+  if(has(/\b(qc|quality control|final check|before completing|before completion)\b/)) return "final_qc";
+
   return "generic";
 }
 function byId(id){return KB_DATA.find(a=>a["Article ID"]===id);}
@@ -374,40 +426,90 @@ function composeIntentAnswer(q,intent){
   if(intent==="mini_missing"){
     return {text:"If Mini Model is unexpectedly missing in ABS, do not substitute another model immediately. Restart or reopen ABS, reopen the case, and check the model list again. If Mini Model still does not appear, stop and escalate instead of selecting an unapproved replacement.",ids:["KB-131","KB-074"]};
   }
+  if(intent==="shade_entry"){
+    return {text:"Enter the shade exactly as written on the Rx. The case-specific Rx instruction takes priority over any default suggestion in ABS. If the shade is missing or inconsistent with other case information, do not guess; document the issue and escalate for clarification.",ids:["KB-064","KB-061","KB-060"]};
+  }
+  if(intent==="due_date_entry"){
+    return {text:"Enter the doctor-requested due date from the Rx into ABS. If the calendar shows a closed date or a scheduling conflict, do not change the requested due date on your own; generate the schedule and then follow the applicable scheduling or escalation rule for the account.",ids:["KB-063","KB-090","KB-094"]};
+  }
+  if(intent==="tooth_selection"){
+    return {text:"Select the exact tooth number shown on the Rx, then click Save Selection. Before saving the overall case, recheck that the selected tooth matches the Rx so the case is not created with the wrong tooth.",ids:["KB-072","KB-060"]};
+  }
+  if(intent==="case_notes"){
+    return {text:"In the ABS case notes, enter the current date, your initials, the doctor's requested due date when required, and any approved clarification or observation that is relevant to the case. If the case information is inconsistent, document the issue and escalate rather than calling the doctor from Data Entry unless that responsibility is formally reassigned.",ids:["KB-065"]};
+  }
+  if(intent==="save_case"){
+    return {text:"Once all required case fields and the schedule have been reviewed, click Continue and then Save. Wait for ABS to generate the unique case number and confirm that the number is visible or that the case can be found in Case Inquiry before proceeding to Rx upload and final quality control.",ids:["KB-100","KB-101","KB-102"]};
+  }
+  if(intent==="final_qc"){
+    return {text:"Before completing a case, verify the doctor and practice, patient information, duplicate check, current scope and routing, product or material, tooth, model and preferences, shade, requested due date, notes, Digital workflow and generated schedule, ABS case number, and the Rx upload in Case Photos. Only complete the case after all of those checks pass.",ids:["KB-102"]};
+  }
   return null;
 }
+function sentenceRelevance(text,q){
+  const qt=queryTokens(q);
+  if(!qt.length)return 0;
+  let score=0,covered=0;
+  for(const t of qt){
+    const m=tokenMatch(t,text);
+    if(m>0){covered++;score+=m;}
+  }
+  return score + (covered/qt.length)*3;
+}
 function genericHumanAnswer(q,ev){
-  const confirmed=ev.confirmed.slice(0,4);
+  const confirmed=ev.confirmed.slice(0,6);
   if(!confirmed.length)return "";
   const type=questionType(q);
-  const primary=confirmed[0].a;
-  const rules=confirmed.map(x=>x.a["Official Answer / SOP"]).filter(Boolean);
-  const steps=[];
-  for(const x of confirmed){
-    const aSteps=String(x.a["Step-by-Step Procedure"]||"").split("\n").map(cleanStep).filter(Boolean);
-    for(const s of aSteps){if(steps.length<6)steps.push(s);}
-  }
-  let intro="Based on the current SOPs, ";
-  if(type==="how")intro="Here is the process based on the current SOPs: ";
-  else if(type==="where")intro="Based on the current SOPs, the correct location or action is as follows: ";
-  else if(type==="duration")intro="Based on the current SOP guidance, ";
-  else if(type==="decision")intro="Based on the current SOPs, ";
+  const candidates=[];
 
-  if(type==="how"&&steps.length){
-    return humanParagraph(intro,steps.slice(0,5),primary["Stop / Escalate When"]?"If the situation falls outside this guidance or would require guessing, stop and escalate.":"");
+  for(const x of confirmed){
+    const a=x.a;
+    const rule=String(a["Official Answer / SOP"]||"").trim();
+    if(rule)candidates.push({text:rule,score:sentenceRelevance(rule,q)+2.2,kind:"rule",article:a});
+    const steps=String(a["Step-by-Step Procedure"]||"").split("\n").map(cleanStep).filter(Boolean);
+    steps.forEach((s,i)=>candidates.push({text:s,score:sentenceRelevance(s,q)+1.2-(i*.04),kind:"step",article:a}));
   }
-  const sentenceRules=uniqSentences(rules.slice(0,3));
-  let out=intro+sentenceRules.join(" ");
-  if(steps.length&&out.length<650)out+=" Recommended steps: "+uniqSentences(steps.slice(0,3)).join(" ");
-  return out.trim().slice(0,1200);
+
+  candidates.sort((a,b)=>b.score-a.score);
+  const selected=[];
+  const seen=new Set();
+  for(const c of candidates){
+    const key=norm(c.text).slice(0,120);
+    if(!key||seen.has(key))continue;
+    if(c.score<1.2 && selected.length>=2)continue;
+    selected.push(c);seen.add(key);
+    if(selected.length>=5)break;
+  }
+
+  if(!selected.length){
+    return String(confirmed[0].a["Official Answer / SOP"]||"Review the related SOPs below.").trim();
+  }
+
+  if(type==="how"){
+    const steps=selected.map(x=>completeSentence(x.text));
+    return "Based on the current SOPs, here is the process: "+steps.join(" ");
+  }
+
+  const sentences=selected.map(x=>completeSentence(x.text));
+  let answer="Based on the current SOPs, "+sentences.join(" ");
+  if(ev.pending.length){
+    answer+=" A related item is still Pending Confirmation, so any part not explicitly covered by the confirmed guidance should be escalated rather than guessed.";
+  }
+  return answer.slice(0,1200);
 }
 function composeHumanAnswer(q,ev,candidates){
   const intent=detectIntent(q);
   const templated=composeIntentAnswer(q,intent);
   if(templated){
-    return {text:templated.text,refs:makeRefsFromIds(templated.ids,candidates),intent};
+    const refs=makeRefsFromIds(templated.ids,candidates);
+    return {text:templated.text,refs,intent,locked:true};
   }
-  return {text:genericHumanAnswer(q,ev),refs:[...ev.confirmed.slice(0,5),...ev.pending.slice(0,1)].slice(0,6),intent};
+  return {
+    text:genericHumanAnswer(q,ev),
+    refs:[...ev.confirmed.slice(0,5),...ev.pending.slice(0,1)].slice(0,6),
+    intent,
+    locked:false
+  };
 }
 function compactContext(x){
   const a=x.a;
@@ -430,63 +532,37 @@ async function ensureAnswerGenerator(){
   }
 }
 async function generateGroundedAnswer(q,candidates,runId){
+  const intent=detectIntent(q);
+
+  // Known intents are authoritative: answer from mapped SOPs even if generic semantic retrieval is noisy.
+  const intentAnswer=composeIntentAnswer(q,intent);
+  if(intentAnswer){
+    const refs=makeRefsFromIds(intentAnswer.ids,candidates);
+    showAssistantMessage(intentAnswer.text,refs,"answer","AI ANSWER · SOP SYNTHESIS");
+    return;
+  }
+
   const ev=chooseEvidence(candidates);
 
-  // Only show "no SOP" when retrieval genuinely has no usable evidence.
   if(!ev.strong.length){
     noConfirmedSop(q,candidates);
     return;
   }
 
-  // If the closest matches are pending only, answer with the pending limitation instead of inventing.
   if(!ev.confirmed.length){
     const pendingAnswer=ev.pending.length
-      ? "The Knowledge Base has a related Pending Confirmation item, but there is not yet an approved procedure that fully answers this question. Do not guess; escalate for clarification and use the referenced pending policy for context."
+      ? "I found a related SOP topic, but the available guidance is still Pending Confirmation. There is not yet an approved procedure that fully answers this question, so do not guess. Escalate for clarification and use the pending policy references below for context."
       : "";
-    if(pendingAnswer){
-      showAssistantMessage(pendingAnswer,ev.pending.slice(0,4),"no-sop","PENDING — ESCALATE");
-    }else{
-      noConfirmedSop(q,ev.strong);
-    }
+    if(pendingAnswer) showAssistantMessage(pendingAnswer,ev.pending.slice(0,4),"no-sop","PENDING — ESCALATE");
+    else noConfirmedSop(q,ev.strong);
     return;
   }
 
-  // Guaranteed answer box: build the answer directly from the SOP evidence first.
+  // For all other questions, synthesize directly from the strongest confirmed SOP evidence.
+  // The unreliable small text-generation model is intentionally NOT allowed to overwrite this answer.
   const composed=composeHumanAnswer(q,ev,candidates);
-  const direct=composed.text;
-  const refs=composed.refs.length?composed.refs:[...ev.confirmed.slice(0,5),...ev.pending.slice(0,2)].slice(0,6);
-  showAssistantMessage(direct,refs,"answer","ANSWERED FROM SOPs");
-
-  // Optional browser AI rewriting layer. Failure here never removes the direct SOP answer.
-  const ready=await ensureAnswerGenerator();
-  if(runId!==answerRunId||state.query.trim()!==q||!ready)return;
-
-  const evidence=[...ev.confirmed.slice(0,4),...ev.pending.slice(0,1)];
-  const context=evidence.map(compactContext).join("\n");
-  const prompt=[
-    "You are the SKDLA Data Entry SOP Answer Assistant.",
-    "A valid SOP answer has already been found. Rewrite the answer so it directly answers the user's exact question.",
-    "Use ONLY the supplied SOP context.",
-    "You must provide an answer when at least one confirmed SOP is supplied.",
-    "Do not say there is no SOP when a confirmed SOP is supplied.",
-    "Do not invent rules, exceptions, dates, shipping methods, or steps.",
-    "If a Pending Confirmation item is relevant, clearly label only that part as pending.",
-    "Keep the answer practical, specific, and complete. Write in normal complete sentences. Use numbered steps only when they genuinely make the procedure easier to follow.",
-    "",
-    "USER QUESTION: "+q,
-    "",
-    "SOP CONTEXT:",
-    context
-  ].join("\n");
-
-  try{
-    const out=await answerGenerator(prompt,{max_new_tokens:190,do_sample:false,repetition_penalty:1.08,no_repeat_ngram_size:3});
-    if(runId!==answerRunId||state.query.trim()!==q)return;
-    const generated=String(out?.[0]?.generated_text||"").trim();
-    if(generated && !/NO_CONFIRMED_SOP|no confirmed sop|no existing sop|cannot answer/i.test(generated)){
-      showAssistantMessage(generated,refs,"answer","AI ANSWER · SOP-GROUNDED");
-    }
-  }catch(e){}
+  const refs=composed.refs.length?composed.refs:[...ev.confirmed.slice(0,5),...ev.pending.slice(0,1)].slice(0,6);
+  showAssistantMessage(composed.text,refs,"answer","AI ANSWER · SOP SYNTHESIS");
 }
 function schedulePolicyAnswer(q){
   clearTimeout(answerTimer);
