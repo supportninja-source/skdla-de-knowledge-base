@@ -9,12 +9,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when the Rx cannot be uploaded despite troubleshooting?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Rx Upload Failure Procedure"
   },
   {
     "Article ID": "P-003",
@@ -26,12 +27,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when Case Photos/Case Pictures cannot be uploaded or verified?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Case Photos Upload Failure Procedure"
   },
   {
     "Article ID": "P-004",
@@ -43,12 +45,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when the required doctor cannot be found in ABS?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Required Doctor Not Found in ABS"
   },
   {
     "Article ID": "P-005",
@@ -60,12 +63,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: Does the one-day-short OCIN rule also apply to a Rush order?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Rush Order One-Day-Short OCIN Rule"
   },
   {
     "Article ID": "P-006",
@@ -77,12 +81,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Training + Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the formal rule for identifying a remake versus a duplicate/new case?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Remake vs Duplicate/New Case Decision Rule"
   },
   {
     "Article ID": "P-007",
@@ -94,12 +99,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What should be entered when only the practice name is available and the doctor cannot be identified?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Practice-Only / Doctor Unidentified Entry"
   },
   {
     "Article ID": "P-008",
@@ -111,12 +117,13 @@
     "Confirmed By": "",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "Draft 3.0",
+    "Version": "Draft 3.1",
     "Notes": "",
     "Source Basis": "Client-led training transcript",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the authoritative anterior/posterior tooth-range chart for model selection?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed."
+    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
+    "Title": "Pending: Anterior/Posterior Tooth-Range Model Chart"
   },
   {
     "Article ID": "KB-121",
@@ -124,16 +131,17 @@
     "Question": "Who are the current five Ninja/Data Entry agents referenced in the team's operating setup?",
     "Official Answer / SOP": "The current five-agent roster used in the team's scheduling and tracker setup is Reignaire Louise Bardiano, Laarnie Morales, Norvic Carreon, Cathlene May Layco, and Rosemarie Bendita.",
     "Keywords": "Ninja roster, Reignaire, Laarnie, Norvic, Cathlene, Rosemarie",
-    "Status": "Internal Tool SOP",
+    "Status": "Internal Team SOP",
     "Confirmed By": "Team operating setup",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "Keep roster maintenance separate from SOP logic when staffing changes.",
     "Source Basis": "Team schedule/tracker setup",
     "Purpose": "Provide a consistent Data Entry procedure for: Who are the current five Ninja/Data Entry agents referenced in the team's operating setup?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: Who are the current five Ninja/Data Entry agents referenced in the team's operating setup?\n2. The current five-agent roster used in the team's scheduling and tracker setup is Reignaire Louise Bardiano, Laarnie Morales, Norvic Carreon, Cathlene May Layco, and Rosemarie Bendita.\n3. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n4. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Current Ninja/Data Entry Team Roster"
   },
   {
     "Article ID": "KB-122",
@@ -141,66 +149,16 @@
     "Question": "Who are the main SKDLA support contacts used for Data Entry process clarification?",
     "Official Answer / SOP": "The support contacts repeatedly used for Data Entry SOP clarification are Raj, Esther, Scott, and Martha. Unresolved process questions should remain pending until confirmed by an authorized support/lead source.",
     "Keywords": "support contacts, Raj, Esther, Scott, Martha, clarification",
-    "Status": "Internal Tool SOP",
+    "Status": "Internal Team SOP",
     "Confirmed By": "Team operating setup",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Production Q&A process",
     "Purpose": "Provide a consistent Data Entry procedure for: Who are the main SKDLA support contacts used for Data Entry process clarification?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: Who are the main SKDLA support contacts used for Data Entry process clarification?\n2. The support contacts repeatedly used for Data Entry SOP clarification are Raj, Esther, Scott, and Martha.\n3. Unresolved process questions should remain pending until confirmed by an authorized support/lead source.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
-  },
-  {
-    "Article ID": "KB-123",
-    "Category": "Tracker & Files",
-    "Question": "How does the scraped-case assignment pipeline relate to ClearPath/client tooling?",
-    "Official Answer / SOP": "The operational flow described by the team is: scrape/download PDF cases from 3Shape, place/upload them in the designated shared folder, allow the client assignment tool (ClearPath in the described workflow) to surface/assign cases to Ninjas, then enter the assigned case in ABS. Reconciliation must verify that scraped cases ultimately receive an ABS disposition.",
-    "Keywords": "ClearPath, client tool, assigned cases, scraped PDF, ABS reconciliation",
-    "Status": "Internal Tool SOP",
-    "Confirmed By": "Internal case-management process",
-    "Effective Date": "",
-    "Last Updated": "2026-09-04",
-    "Version": "3.0",
-    "Notes": "",
-    "Source Basis": "Sep 2026 tracker design",
-    "Purpose": "Provide a consistent Data Entry procedure for: How does the scraped-case assignment pipeline relate to ClearPath/client tooling?",
-    "Step-by-Step Procedure": "1. Scrape/download the source PDF from 3Shape or the applicable portal.\n2. Place/upload the PDF in the designated shared/intake folder.\n3. Allow the client assignment tool to surface/assign the case to a Ninja.\n4. Open the assigned source PDF and perform ABS entry.\n5. Record the ABS case number/disposition in the tracker after creation.\n6. At EOD, reconcile every scraped source PDF to an ABS completion, escalation/reroute, or legitimate pending disposition.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
-  },
-  {
-    "Article ID": "KB-124",
-    "Category": "Tracker & Files",
-    "Question": "What tracker statuses/workstreams may appear in the case-management automation?",
-    "Official Answer / SOP": "Depending on the deployed workstream, the automation has used statuses/actions such as Available, Pending/In Progress, Orange County, Completed, Onboarding, Removables, AOX, Production, Completed-AOX, and Completed-Removables. A Ninja should use only the buttons/workstreams enabled for their assigned role; these statuses do not automatically expand the current case-entry scope.",
-    "Keywords": "Available, Pending, In Progress, Orange County, Completed, Onboarding, Removables, AOX, Production",
-    "Status": "Internal Tool SOP",
-    "Confirmed By": "Internal automation design",
-    "Effective Date": "",
-    "Last Updated": "2026-09-04",
-    "Version": "3.0",
-    "Notes": "Tracker capabilities and production authorization are separate concepts.",
-    "Source Basis": "Case automation history",
-    "Purpose": "Provide a consistent Data Entry procedure for: What tracker statuses/workstreams may appear in the case-management automation?",
-    "Step-by-Step Procedure": "1. Review the case/tool context for: What tracker statuses/workstreams may appear in the case-management automation?\n2. Depending on the deployed workstream, the automation has used statuses/actions such as Available, Pending/In Progress, Orange County, Completed, Onboarding, Removables, AOX, Production, Completed-AOX, and Completed-Removables.\n3. A Ninja should use only the buttons/workstreams enabled for their assigned role; these statuses do not automatically expand the current case-entry scope.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
-  },
-  {
-    "Article ID": "KB-125",
-    "Category": "Tracker & Files",
-    "Question": "What timestamp and link conventions should the tracker use?",
-    "Official Answer / SOP": "Use date-only values for Sync Date/Completion Date where configured, time-only values for Start Time/End Time, record Assigned To automatically on Generate, retain Reason for Escalation and ABS Case Number, and keep the source PDF as a clickable link that opens the user's local/synced copy when available.",
-    "Keywords": "Sync Date, Completion Date, Start Time, End Time, clickable link, Assigned To, escalation reason",
-    "Status": "Internal Tool SOP",
-    "Confirmed By": "Internal automation design",
-    "Effective Date": "",
-    "Last Updated": "2026-09-04",
-    "Version": "3.0",
-    "Notes": "",
-    "Source Basis": "Excel/VBA case tracker",
-    "Purpose": "Provide a consistent Data Entry procedure for: What timestamp and link conventions should the tracker use?",
-    "Step-by-Step Procedure": "1. Review the case/tool context for: What timestamp and link conventions should the tracker use?\n2. Use date-only values for Sync Date/Completion Date where configured, time-only values for Start Time/End Time, record Assigned To automatically on Generate, retain Reason for Escalation and ABS Case Number, and keep the source PDF as a clickable link that opens the user's local/synced copy when available.\n3. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n4. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "SKDLA Data Entry Process Clarification Contacts"
   }
 ]
