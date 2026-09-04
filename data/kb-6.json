@@ -15,7 +15,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when the Rx cannot be uploaded despite troubleshooting?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
     "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
-    "Title": "Pending: Rx Upload Failure Procedure"
+    "Title": "Pending: Rx Upload Failure Procedure",
+    "Search Intent Examples": "The Rx will not upload. Uploading the prescription fails. Can I complete without the Rx?"
   },
   {
     "Article ID": "P-003",
@@ -33,7 +34,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when Case Photos/Case Pictures cannot be uploaded or verified?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
     "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
-    "Title": "Pending: Case Photos Upload Failure Procedure"
+    "Title": "Pending: Case Photos Upload Failure Procedure",
+    "Search Intent Examples": "Case Photos will not upload. I cannot attach the picture or document in Case Photos."
   },
   {
     "Article ID": "P-004",
@@ -51,7 +53,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What is the exact process when the required doctor cannot be found in ABS?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
     "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
-    "Title": "Pending: Required Doctor Not Found in ABS"
+    "Title": "Pending: Required Doctor Not Found in ABS",
+    "Search Intent Examples": "No doctor is found in ABS. The correct doctor is not showing. What do I do if the doctor is missing?"
   },
   {
     "Article ID": "P-005",
@@ -105,7 +108,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should be entered when only the practice name is available and the doctor cannot be identified?",
     "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
     "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
-    "Title": "Pending: Practice-Only / Doctor Unidentified Entry"
+    "Title": "Pending: Practice-Only / Doctor Unidentified Entry",
+    "Search Intent Examples": "I only have the practice name and no doctor. I cannot identify the doctor."
   },
   {
     "Article ID": "P-008",
