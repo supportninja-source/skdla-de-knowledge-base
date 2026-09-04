@@ -58,12 +58,31 @@ const searchInput=document.getElementById("searchInput"),categoryFilter=document
 function esc(s){return String(s??"").replace(/[&<>"\']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[m]));}
 function norm(s){return String(s??"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 const STOPWORDS=new Set(["what","when","where","which","who","why","how","do","does","did","can","could","should","would","the","a","an","to","of","for","in","on","at","with","and","or","is","are","was","were","be","been","being","i","we","they","he","she","it","my","our","their","this","that","these","those","please","help","need","want","case","cases"]);
-const SYNONYM_GROUPS=[["rx","prescription","script","order","workorder","work","ticket"],["doctor","dentist","dr","provider"],["oc","orange","county","orangecounty"],["clearpath","claim","grab","assign","assignment","assigned","queue"],["upload","attach","attachment","add","document","file"],["duplicate","dupe","remake","existing","history"],["implant","screw","retained","screwretained"],["due","date","dd","deadline","schedule","scheduling"],["short","rush","urgent","expedite"],["model","mini","quadrant","full","arch","fullarch"],["digital","analog","workflow"],["shade","color","colour"],["patient","name","firstname","lastname","middle"],["error","issue","problem","missing","cant","cannot","wont","failed","failure","crash"],["3shape","shape","portal"],["aspen","ocasp","beacon"],["photo","photos","picture","pictures","casephotos"]];
+const SYNONYM_GROUPS=[["rx","prescription","script","order","workorder","work","ticket"],["doctor","dentist","dr","provider"],["oc","orange","county","orangecounty"],["clearpath","claim","grab","assign","assignment","assigned","queue"],["upload","attach","attachment","add","document","file"],["duplicate","dupe","remake","existing","history"],["implant","screw","retained","screwretained"],["due","date","dd","deadline","schedule","scheduling"],["short","rush","urgent","expedite"],["model","mini","quadrant","full","arch","fullarch"],["digital","analog","workflow"],["shade","color","colour"],["patient","name","firstname","lastname","middle"],["error","issue","problem","missing","cant","cannot","wont","failed","failure","crash"],["3shape","shape","portal"],["aspen","ocasp","beacon"],["photo","photos","picture","pictures","casephotos"],["shipping","ship","carrier","delivery","ups"],["turnaround","processing","process","days","duration","timeline"]];
 function editDistance(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)d[i][0]=i;for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
 function queryTokens(q){return norm(q).replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(x=>x&&(!STOPWORDS.has(x)||x.length>6));}
 function variants(t){const out=new Set([t]);for(const g of SYNONYM_GROUPS){if(g.includes(t))g.forEach(x=>out.add(x));}return [...out];}
 function tokenMatch(t,text){const nt=norm(text);for(const v of variants(t)){if(nt.includes(v))return 1;}const words=nt.replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(Boolean);if(t.length>=4){for(const w of words){if(Math.abs(w.length-t.length)<=1&&editDistance(t,w)<=1)return .72;if(w.startsWith(t.slice(0,Math.max(3,t.length-1))))return .62;}}return 0;}
-function lexicalScore(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],12],[a["Search Intent Examples"],11],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;if(covered===0||coverage<Math.min(.5,1/terms.length))return 0;return total*(.7+.3*coverage);}
+function intentBoost(a,q){
+  const n=norm(q);
+  const id=a["Article ID"];
+  let b=0;
+  const has=(re)=>re.test(n);
+  if(id==="KB-043"&&has(/(enter|encode|create|start).*(abs|new case)|(abs).*(enter|encode|create|start)/))b+=26;
+  if(id==="KB-040"&&has(/(open|window|prepare|setup).*(abs)|(abs).*(window|prepare|setup)/))b+=18;
+  if((id==="KB-062"||id==="KB-101")&&has(/(upload|attach|add).*(rx|prescription)|(rx|prescription).*(upload|attach|add)/))b+=24;
+  if(id==="P-002"&&has(/(rx|prescription).*(fail|failed|cannot|cant|wont|error|issue)|(fail|failed|cannot|cant|wont|error|issue).*(rx|prescription)/))b+=28;
+  if(id==="KB-095"&&has(/(shipping|ship|carrier|ups|delivery).*(method|use|choose|select|supported)|(method|use|choose|select|supported).*(shipping|ship|carrier|ups|delivery)/))b+=28;
+  if(id==="KB-091"&&has(/(how many|days|turnaround|processing|duration|how long).*(zirconia|workflow|process)|(zirconia|workflow|process).*(how many|days|turnaround|processing|duration|how long)/))b+=28;
+  if(id==="KB-051"&&has(/(two|multiple|more than one).*(doctor|dentist)|(doctor|dentist).*(two|multiple|more than one)/))b+=30;
+  if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
+  if(id==="KB-080"&&has(/implant/))b+=24;
+  if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
+  if(id==="KB-093"&&has(/(two|2).*(day|days).*(short)|(short).*(two|2).*(day|days)/))b+=30;
+  if(id==="KB-092"&&has(/(one|1).*(day|days).*(short)|(short).*(one|1).*(day|days)/))b+=30;
+  return b;
+}
+function lexicalScore(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],12],[a["Search Intent Examples"],11],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;const boost=intentBoost(a,q);if(covered===0&&boost===0)return 0;if(coverage<Math.min(.5,1/terms.length)&&boost<20)return 0;return total*(.7+.3*coverage)+boost;}
 function hi(text,q){let out=esc(text);for(const t of String(q||"").trim().split(/\s+/).filter(x=>x.length>1)){const safe=t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");out=out.replace(new RegExp("("+safe+")","gi"),'<span class="highlight">$1</span>');}return out;}
 function badge(s){return s==="Official"?"official":s==="Training Guidance"?"training":s==="Internal Team SOP"?"internal":"pending";}
 function statusMatch(s){if(!state.status)return true;if(state.status==="ACTIVE")return s!=="Pending Confirmation";return s===state.status;}
@@ -149,7 +168,7 @@ function assistantCandidates(q){
   })).map(x=>({...x,rank:(x.sem*100*.72)+Math.min(40,x.lex)*.28}))
     .filter(x=>x.rank>0)
     .sort((x,y)=>y.rank-x.rank);
-  return items.slice(0,8);
+  return items.slice(0,10);
 }
 function showAssistantMessage(body,refs=[],mode="answer",stateText="GROUNDED IN SOPs"){
   assistantPanel.style.display="block";
