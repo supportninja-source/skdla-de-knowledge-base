@@ -11,7 +11,7 @@
 .hero{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:42px 20px 36px}.hero-inner{max-width:1220px;margin:auto}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;opacity:.82}
 h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{max-width:880px;margin:0;line-height:1.65;opacity:.92}
 .search-wrap{max-width:1220px;margin:-22px auto 0;padding:0 20px;position:relative;z-index:3}.search-box{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:14px;padding:14px;display:flex;gap:10px;align-items:center}
-#searchInput{width:100%;border:none;outline:none;font-size:17px;background:transparent}.container{max-width:1220px;margin:auto;padding:28px 20px 56px}
+#searchInput{width:100%;border:none;outline:none;font-size:17px;background:transparent}.semantic-status{max-width:1220px;margin:8px auto 0;padding:0 22px;font-size:12px;color:#65758b;min-height:18px}.semantic-status strong{color:#10385f}.semantic-status.ready{color:#166534}.semantic-status.loading{color:#8a5b00}.semantic-status.fallback{color:#65758b}.match-note{font-size:11px;font-weight:800;color:#1f6aa5;background:#edf4fa;border-radius:999px;padding:4px 8px;margin-left:auto}.container{max-width:1220px;margin:auto;padding:28px 20px 56px}
 .summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:18px}.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 15px}.kpi b{display:block;font-size:22px;color:var(--navy)}.kpi span{font-size:12px;color:var(--muted)}
 .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}select,.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 12px;color:var(--text)}
 .tabs{display:flex;gap:6px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:#fff;padding:8px 11px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:700}.tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
@@ -31,7 +31,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <h1>Data Entry Knowledge Base</h1>
 <p class="subtitle">Search step-by-step SKDLA Data Entry SOPs for portal scraping, ABS case entry, Orange County routing, Rx/document requirements, scheduling, troubleshooting, and quality control. The retired case-designation tracker has been removed. ClearPath assignment instructions will be added once the official steps are provided.</p>
 </div></header>
-<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Describe what you need help with — e.g., cannot upload Rx, implant case, OCIN short due date..." aria-label="Search knowledge base"></div></div>
+<div class="search-wrap"><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Describe what you need help with — e.g., cannot upload Rx, implant case, OCIN short due date..." aria-label="Search knowledge base"></div></div><div id="semanticStatus" class="semantic-status fallback">Smart search is ready. For longer questions, semantic matching will load automatically.</div>
 <main class="container">
 <section class="summary">
 <div class="kpi"><b id="kpiAll">—</b><span>Total KB articles</span></div>
@@ -49,46 +49,109 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.1 • Formal SOP Titles + Smart Search • September 4, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.2 • Hybrid Semantic Search • September 4, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
 const state={query:"",category:"",status:"ACTIVE"};
-const searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),results=document.getElementById("results"),stats=document.getElementById("stats"),empty=document.getElementById("emptyState"),errorState=document.getElementById("errorState");
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
+const searchInput=document.getElementById("searchInput"),categoryFilter=document.getElementById("categoryFilter"),results=document.getElementById("results"),stats=document.getElementById("stats"),empty=document.getElementById("emptyState"),errorState=document.getElementById("errorState"),semanticStatus=document.getElementById("semanticStatus");
+function esc(s){return String(s??"").replace(/[&<>"\']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[m]));}
 function norm(s){return String(s??"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 const STOPWORDS=new Set(["what","when","where","which","who","why","how","do","does","did","can","could","should","would","the","a","an","to","of","for","in","on","at","with","and","or","is","are","was","were","be","been","being","i","we","they","he","she","it","my","our","their","this","that","these","those","please","help","need","want","case","cases"]);
-const SYNONYM_GROUPS=[
-["rx","prescription","script","order","workorder","work","ticket"],
-["doctor","dentist","dr","provider"],
-["oc","orange","county","orangecounty"],
-["clearpath","claim","grab","assign","assignment","assigned","queue"],
-["upload","attach","attachment","add","document","file"],
-["duplicate","dupe","remake","existing","history"],
-["implant","screw","retained","screwretained"],
-["due","date","dd","deadline","schedule","scheduling"],
-["short","rush","urgent","expedite"],
-["model","mini","quadrant","full","arch","fullarch"],
-["digital","analog","workflow"],
-["shade","color","colour"],
-["patient","name","firstname","lastname","middle"],
-["error","issue","problem","missing","cant","cannot","wont","failed","failure","crash"],
-["3shape","shape","portal"],
-["aspen","ocasp","beacon"],
-["photo","photos","picture","pictures","casephotos"]
-];
+const SYNONYM_GROUPS=[["rx","prescription","script","order","workorder","work","ticket"],["doctor","dentist","dr","provider"],["oc","orange","county","orangecounty"],["clearpath","claim","grab","assign","assignment","assigned","queue"],["upload","attach","attachment","add","document","file"],["duplicate","dupe","remake","existing","history"],["implant","screw","retained","screwretained"],["due","date","dd","deadline","schedule","scheduling"],["short","rush","urgent","expedite"],["model","mini","quadrant","full","arch","fullarch"],["digital","analog","workflow"],["shade","color","colour"],["patient","name","firstname","lastname","middle"],["error","issue","problem","missing","cant","cannot","wont","failed","failure","crash"],["3shape","shape","portal"],["aspen","ocasp","beacon"],["photo","photos","picture","pictures","casephotos"]];
 function editDistance(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)d[i][0]=i;for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
 function queryTokens(q){return norm(q).replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(x=>x&&(!STOPWORDS.has(x)||x.length>6));}
 function variants(t){const out=new Set([t]);for(const g of SYNONYM_GROUPS){if(g.includes(t))g.forEach(x=>out.add(x));}return [...out];}
 function tokenMatch(t,text){const nt=norm(text);for(const v of variants(t)){if(nt.includes(v))return 1;}const words=nt.replace(/[^a-z0-9]+/g," ").split(/\s+/).filter(Boolean);if(t.length>=4){for(const w of words){if(Math.abs(w.length-t.length)<=1&&editDistance(t,w)<=1)return .72;if(w.startsWith(t.slice(0,Math.max(3,t.length-1))))return .62;}}return 0;}
-function score(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],10],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;if(covered===0||coverage<Math.min(.5,1/terms.length))return 0;return total*(.7+.3*coverage);}
-function hi(text,q){let out=esc(text);for(const t of String(q||"").trim().split(/\s+/).filter(x=>x.length>1)){const safe=t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");out=out.replace(new RegExp(`(${safe})`,"gi"),'<span class="highlight">$1</span>')}return out;}
+function lexicalScore(a,q){if(!q)return 1;const terms=queryTokens(q);if(!terms.length)return 1;const fields=[[a["Title"],10],[a["Keywords"],8],[a["Step-by-Step Procedure"],7],[a["Official Answer / SOP"],6],[a["Question"],5],[a["Purpose"],4],[a["Category"],4],[a["Article ID"],2],[a["Confirmed By"],1],[a["Source Basis"],1]];let total=0,covered=0;for(const t of terms){let best=0;for(const [v,w] of fields){const m=tokenMatch(t,v);best=Math.max(best,m*w);}if(best>0){covered++;total+=best;}}const coverage=covered/terms.length;if(covered===0||coverage<Math.min(.5,1/terms.length))return 0;return total*(.7+.3*coverage);}
+function hi(text,q){let out=esc(text);for(const t of String(q||"").trim().split(/\s+/).filter(x=>x.length>1)){const safe=t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");out=out.replace(new RegExp("("+safe+")","gi"),'<span class="highlight">$1</span>');}return out;}
 function badge(s){return s==="Official"?"official":s==="Training Guidance"?"training":s==="Internal Team SOP"?"internal":"pending";}
 function statusMatch(s){if(!state.status)return true;if(state.status==="ACTIVE")return s!=="Pending Confirmation";return s===state.status;}
-function render(){const q=state.query.trim();let m=KB_DATA.map(a=>({a,score:score(a,q)})).filter(x=>x.score>0).filter(x=>!state.category||x.a.Category===state.category).filter(x=>statusMatch(x.a.Status)).sort((x,y)=>q?y.score-x.score:x.a["Article ID"].localeCompare(y.a["Article ID"]));if(q&&m.length){const cutoff=Math.max(4,m[0].score*.32);m=m.filter(x=>x.score>=cutoff);}results.innerHTML=m.map(({a})=>`<article class="card" id="${esc(a["Article ID"])}"><div class="card-top"><div class="meta-left"><span class="article-id">${esc(a["Article ID"])}</span><span class="category">${esc(a["Category"])}</span></div><span class="badge ${badge(a["Status"])}">${esc(a["Status"])}</span></div><h2 class="question">${hi(a["Title"]||a["Question"],q)}</h2><div class="policy-label">Policy / Rule</div><p class="answer">${hi(a["Official Answer / SOP"],q)}</p>${a["Step-by-Step Procedure"]?`<div class="policy-label">Step-by-Step Procedure</div><div class="procedure">${hi(a["Step-by-Step Procedure"],q)}</div>`:""}${a["Stop / Escalate When"]?`<div class="escalate"><b>Stop / Escalate:</b> ${esc(a["Stop / Escalate When"])}</div>`:""}<div class="details"><div><b>Authority:</b> ${esc(a["Confirmed By"]||a["Source Basis"]||"Awaiting confirmation")}</div><div><b>Version:</b> ${esc(a["Version"])}</div><div><b>Last updated:</b> ${esc(a["Last Updated"]||"—")}</div><div><b>Effective:</b> ${esc(a["Effective Date"]||"—")}</div><div class="wide"><b>Keywords:</b> ${hi(a["Keywords"],q)}</div>${a["Notes"]?`<div class="wide"><b>Notes:</b> ${esc(a["Notes"])}</div>`:""}${a["Source Basis"]?`<div class="wide"><b>Source basis:</b> ${esc(a["Source Basis"])}</div>`:""}</div></article>`).join("");stats.textContent=`${m.length} article${m.length===1?"":"s"} shown`;empty.style.display=m.length?"none":"block";}
+
+// Hybrid semantic search: local browser embeddings + lexical/fuzzy fallback.
+let semanticExtractor=null;
+let semanticVectors=new Map();
+let semanticReady=false;
+let semanticLoading=false;
+let semanticFailed=false;
+let semanticQueryScores=new Map();
+let semanticQueryText="";
+let semanticTimer=null;
+const SEMANTIC_MODEL="Xenova/all-MiniLM-L6-v2";
+const SEMANTIC_CACHE_VERSION="skdla-semantic-v3.2-minilm-q8";
+function semanticDocText(a){return [a.Title,a.Question,a.Category,a.Keywords,a["Official Answer / SOP"],a["Step-by-Step Procedure"],a["Stop / Escalate When"]].filter(Boolean).join(". ").slice(0,5000);}
+function semanticSignature(){return KB_DATA.map(a=>a["Article ID"]+":"+a.Version).join("|");}
+function setSemanticStatus(text,cls){semanticStatus.textContent=text;semanticStatus.className="semantic-status "+(cls||"fallback");}
+function loadCachedVectors(){try{const raw=localStorage.getItem(SEMANTIC_CACHE_VERSION);if(!raw)return false;const c=JSON.parse(raw);if(c.signature!==semanticSignature()||!Array.isArray(c.items))return false;semanticVectors=new Map(c.items.map(x=>[x[0],x[1]]));return semanticVectors.size===KB_DATA.length;}catch(e){return false;}}
+function saveCachedVectors(){try{localStorage.setItem(SEMANTIC_CACHE_VERSION,JSON.stringify({signature:semanticSignature(),items:[...semanticVectors.entries()]}));}catch(e){}}
+function dot(a,b){let s=0;const n=Math.min(a.length,b.length);for(let i=0;i<n;i++)s+=a[i]*b[i];return s;}
+async function ensureSemantic(){
+  if(semanticReady||semanticLoading||semanticFailed)return;
+  semanticLoading=true;setSemanticStatus("Loading semantic search model in this browser. Instant smart search remains available while it loads…","loading");
+  try{
+    const mod=await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1");
+    semanticExtractor=await mod.pipeline("feature-extraction",SEMANTIC_MODEL,{dtype:"q8"});
+    if(loadCachedVectors()){semanticReady=true;semanticLoading=false;setSemanticStatus("Semantic search ready — questions are matched by meaning, not only exact words.","ready");if(state.query.trim())await runSemanticQuery(state.query.trim());return;}
+    semanticVectors.clear();
+    const batchSize=12;
+    for(let i=0;i<KB_DATA.length;i+=batchSize){
+      const batch=KB_DATA.slice(i,i+batchSize);
+      setSemanticStatus("Learning the SOP library for semantic search… "+Math.min(i+batch.length,KB_DATA.length)+"/"+KB_DATA.length,"loading");
+      const out=await semanticExtractor(batch.map(semanticDocText),{pooling:"mean",normalize:true});
+      const vecs=out.tolist();
+      batch.forEach((a,j)=>semanticVectors.set(a["Article ID"],vecs[j]));
+      await new Promise(r=>setTimeout(r,0));
+    }
+    saveCachedVectors();semanticReady=true;semanticLoading=false;setSemanticStatus("Semantic search ready — questions are matched by meaning, not only exact words.","ready");
+    if(state.query.trim())await runSemanticQuery(state.query.trim());
+  }catch(e){semanticFailed=true;semanticLoading=false;setSemanticStatus("Semantic model could not load on this device/network. Enhanced fuzzy search is still active.","fallback");}
+}
+async function runSemanticQuery(q){
+  if(!semanticReady||!semanticExtractor||!q)return;
+  const requested=q;
+  try{
+    const out=await semanticExtractor([q],{pooling:"mean",normalize:true});
+    const qv=out.tolist()[0];
+    const m=new Map();
+    for(const a of KB_DATA){const v=semanticVectors.get(a["Article ID"]);if(v)m.set(a["Article ID"],dot(qv,v));}
+    if(state.query.trim()!==requested)return;
+    semanticQueryScores=m;semanticQueryText=requested;render();
+  }catch(e){}
+}
+function scheduleSemantic(q){
+  clearTimeout(semanticTimer);
+  if(!q||q.trim().length<7){semanticQueryScores=new Map();semanticQueryText="";return;}
+  semanticTimer=setTimeout(async()=>{await ensureSemantic();if(semanticReady)await runSemanticQuery(q.trim());},500);
+}
+function hybridScore(a,q){
+  const lex=lexicalScore(a,q);
+  if(!q)return 1;
+  if(semanticReady&&semanticQueryText===q&&semanticQueryScores.has(a["Article ID"])){
+    const sem=semanticQueryScores.get(a["Article ID"]);
+    const semScaled=Math.max(0,sem)*100;
+    const lexicalScaled=Math.min(35,lex);
+    return semScaled*.78+lexicalScaled*.22;
+  }
+  return lex;
+}
+function matchLabel(a,q){
+  if(!q)return "";
+  if(semanticReady&&semanticQueryText===q&&semanticQueryScores.has(a["Article ID"])){const s=semanticQueryScores.get(a["Article ID"]);if(s>=.58)return "Strong semantic match";if(s>=.45)return "Related by meaning";return "Possible related SOP";}
+  return lexicalScore(a,q)>0?"Smart match":"";
+}
+function render(){
+  const q=state.query.trim();
+  let m=KB_DATA.map(a=>({a,score:hybridScore(a,q)})).filter(x=>x.score>0).filter(x=>!state.category||x.a.Category===state.category).filter(x=>statusMatch(x.a.Status)).sort((x,y)=>q?y.score-x.score:x.a["Article ID"].localeCompare(y.a["Article ID"]));
+  if(q&&m.length){if(semanticReady&&semanticQueryText===q){const floor=Math.max(22,m[0].score*.48);m=m.filter(x=>x.score>=floor).slice(0,8);}else{const cutoff=Math.max(4,m[0].score*.32);m=m.filter(x=>x.score>=cutoff).slice(0,10);}}
+  results.innerHTML=m.map(({a})=>{const ml=matchLabel(a,q);return `<article class="card" id="${esc(a["Article ID"])}"><div class="card-top"><div class="meta-left"><span class="article-id">${esc(a["Article ID"])}</span><span class="category">${esc(a["Category"])}</span></div>${ml?`<span class="match-note">${esc(ml)}</span>`:""}<span class="badge ${badge(a["Status"])}">${esc(a["Status"])}</span></div><h2 class="question">${hi(a["Title"]||a["Question"],q)}</h2><div class="policy-label">Policy / Rule</div><p class="answer">${hi(a["Official Answer / SOP"],q)}</p>${a["Step-by-Step Procedure"]?`<div class="policy-label">Step-by-Step Procedure</div><div class="procedure">${hi(a["Step-by-Step Procedure"],q)}</div>`:""}${a["Stop / Escalate When"]?`<div class="escalate"><b>Stop / Escalate:</b> ${esc(a["Stop / Escalate When"])}</div>`:""}<div class="details"><div><b>Authority:</b> ${esc(a["Confirmed By"]||a["Source Basis"]||"Awaiting confirmation")}</div><div><b>Version:</b> ${esc(a["Version"])}</div><div><b>Last updated:</b> ${esc(a["Last Updated"]||"—")}</div><div><b>Effective:</b> ${esc(a["Effective Date"]||"—")}</div><div class="wide"><b>Keywords:</b> ${hi(a["Keywords"],q)}</div>${a["Notes"]?`<div class="wide"><b>Notes:</b> ${esc(a["Notes"])}</div>`:""}${a["Source Basis"]?`<div class="wide"><b>Source basis:</b> ${esc(a["Source Basis"])}</div>`:""}</div></article>`;}).join("");
+  stats.textContent=`${m.length} ${q?"recommended ":""}SOP${m.length===1?"":"s"} shown`;empty.style.display=m.length?"none":"block";
+}
 function init(){[...new Set(KB_DATA.map(a=>a.Category))].sort().forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;categoryFilter.appendChild(o)});document.getElementById("kpiAll").textContent=KB_DATA.length;document.getElementById("kpiOfficial").textContent=KB_DATA.filter(a=>a.Status==="Official").length;document.getElementById("kpiTraining").textContent=KB_DATA.filter(a=>a.Status==="Training Guidance").length;document.getElementById("kpiPending").textContent=KB_DATA.filter(a=>a.Status==="Pending Confirmation").length;render();}
-async function load(){try{const parts=await Promise.all(DATA_FILES.map(f=>fetch(f,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`${f}: ${r.status}`);return r.json()})));KB_DATA=parts.flat();init()}catch(e){stats.textContent="Could not load KB";errorState.textContent="Knowledge Base data could not be loaded. Please refresh the page or contact the KB owner. ("+e.message+")";errorState.style.display="block";}}
-searchInput.addEventListener("input",e=>{state.query=e.target.value;render()});categoryFilter.addEventListener("change",e=>{state.category=e.target.value;render()});document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.status=b.dataset.status;render()}));document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==searchInput){e.preventDefault();searchInput.focus()}});
+async function load(){try{const parts=await Promise.all(DATA_FILES.map(f=>fetch(f,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`${f}: ${r.status}`);return r.json()})));KB_DATA=parts.flat();init();}catch(e){stats.textContent="Could not load KB";errorState.textContent="Knowledge Base data could not be loaded. Please refresh the page or contact the KB owner. ("+e.message+")";errorState.style.display="block";}}
+searchInput.addEventListener("input",e=>{state.query=e.target.value;semanticQueryScores=new Map();semanticQueryText="";render();scheduleSemantic(state.query);});
+categoryFilter.addEventListener("change",e=>{state.category=e.target.value;render();});
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.status=b.dataset.status;render();}));
+document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==searchInput){e.preventDefault();searchInput.focus();}});
 load();
 </script>
 </body></html>
