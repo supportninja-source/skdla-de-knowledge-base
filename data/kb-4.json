@@ -15,7 +15,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What is the model rule for OCIN accounts?",
     "Step-by-Step Procedure": "1. Identify whether the account is OCIN.\n2. Do not select a Mini Model for OCIN.\n3. For posterior cases, use the approved Quadrant guidance.\n4. For anterior cases, use the approved Full guidance.\n5. For mixed anterior/posterior cases, use the approved Full Arch guidance from training.\n6. If tooth-range/model mapping is not clearly covered, stop and escalate rather than guessing.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "OCIN Model Selection Rules"
+    "Title": "OCIN Model Selection Rules",
+    "Search Intent Examples": "What model do I use for OCIN? Can I use Mini Model for OCIN? Which model for anterior or posterior OCIN?"
   },
   {
     "Article ID": "KB-076",
@@ -87,7 +88,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should happen to implant cases?",
     "Step-by-Step Procedure": "1. Review the Rx and case indicators for implant-related language.\n2. If the case is implant-related, stop standard Ninja processing.\n3. Route/pass the case to Orange County (OC).\n4. Add the appropriate route/tracker information required by the current workflow.\n5. Do not process it as a normal 1-unit Zirconia Crown case.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Implant Case Routing to Orange County"
+    "Title": "Implant Case Routing to Orange County",
+    "Search Intent Examples": "This is an implant case. Can I process it? Where do implant cases go?"
   },
   {
     "Article ID": "KB-081",
@@ -105,7 +107,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should happen to Screw Retained Crown cases?",
     "Step-by-Step Procedure": "1. Review the Rx/material/design description.\n2. If Screw Retained or another implant indicator is present, treat the case as implant-related.\n3. Route the case to OC.\n4. Do not allow Zirconia Monolithic wording alone to override the Screw Retained/implant routing indicator.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Screw Retained Crown Routing to Orange County"
+    "Title": "Screw Retained Crown Routing to Orange County",
+    "Search Intent Examples": "The case says Screw Retained and Zirconia. Can I process it? Does Screw Retained go to Orange County?"
   },
   {
     "Article ID": "KB-082",
@@ -141,7 +144,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: How is the digital workflow schedule generated?",
     "Step-by-Step Procedure": "1. Open Digital Workflow / View Schedule.\n2. Confirm the workflow is set to Digital.\n3. Click Generate Schedule.\n4. Review the generated dates/steps against the requested due date and applicable account rule.\n5. Do not manually alter the generated production schedule unless an approved process directs it.\n6. If the schedule is short or conflicts, apply the appropriate routing/escalation rule.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Digital Workflow Schedule Generation"
+    "Title": "Digital Workflow Schedule Generation",
+    "Search Intent Examples": "How do I generate the schedule? Where do I create the digital workflow schedule?"
   },
   {
     "Article ID": "KB-091",
@@ -159,7 +163,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What was the typical Zirconia workflow duration shown in training?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: What was the typical Zirconia workflow duration shown in training?\n2. Training examples described Zirconia as typically using about a four-day digital workflow.\n3. Treat the actual ABS-generated schedule and current account rules as authoritative rather than manually forcing a four-day timeline.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Zirconia Workflow Duration Reference"
+    "Title": "Zirconia Workflow Duration Reference",
+    "Search Intent Examples": "How many days does a Zirconia case take? What is our turnaround time? How long is the normal digital workflow? How many processing days?"
   },
   {
     "Article ID": "KB-092",
@@ -177,7 +182,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should be done if an OCIN schedule is one day short?",
     "Step-by-Step Procedure": "1. Generate the OCIN schedule.\n2. Compare the generated timeline with the requested due date.\n3. If the schedule is exactly one day short, proceed under the confirmed OCIN guidance.\n4. Continue required notes/QC and save the case as applicable.\n5. If a different exception is present, use the relevant rule rather than assuming the one-day exception applies.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "OCIN One-Day-Short Schedule Handling"
+    "Title": "OCIN One-Day-Short Schedule Handling",
+    "Search Intent Examples": "The OCIN case is one day short. Can I proceed?"
   },
   {
     "Article ID": "KB-093",
@@ -195,7 +201,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What should be done if an OCIN schedule is two days short?",
     "Step-by-Step Procedure": "1. Generate the OCIN schedule.\n2. If the schedule is two days short, stop normal processing.\n3. Route/forward the case to OC because a call is required.\n4. Add the required route/tracker note according to the current workflow.\n5. Do not force the schedule or simply complete the case.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "OCIN Two-Day-Short Schedule Handling"
+    "Title": "OCIN Two-Day-Short Schedule Handling",
+    "Search Intent Examples": "The OCIN case is two days short. What should I do?"
   },
   {
     "Article ID": "KB-094",
@@ -213,7 +220,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What if ABS says an OCIN shipping/due date must be more than five days from today?",
     "Step-by-Step Procedure": "1. Generate/open the schedule and calendar.\n2. When ABS indicates the shipping/due date must be more than five days from today, identify the date the calendar is offering.\n3. Document the need for a new due date in the case notes.\n4. Use the current responsible contact in the note, for example '[name] to call for new DD of [date]'.\n5. Route/escalate the case for the required call.\n6. Do not independently change the doctor-requested due date.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "OCIN More-Than-Five-Days Due Date Exception"
+    "Title": "OCIN More-Than-Five-Days Due Date Exception",
+    "Search Intent Examples": "ABS says the due date needs to be more than five days. What should I do with the due date?"
   },
   {
     "Article ID": "KB-095",
@@ -231,7 +239,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What shipping method was confirmed for the applicable production cases discussed?",
     "Step-by-Step Procedure": "1. Check whether the case/account is covered by this confirmed guidance.\n2. Select UPS / UPS 2nd Day for those applicable cases.\n3. Use the default 8:00 AM ship time when the case matches the guidance.\n4. Verify there is no case/account-specific shipping instruction that overrides this.\n5. Do not generalize this shipping method to every account.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Confirmed Shipping Method for Applicable Production Cases"
+    "Title": "Confirmed Shipping Method for Applicable Production Cases",
+    "Search Intent Examples": "What shipping method do we support? What carrier should I select? Do we use UPS? What shipping should I choose?"
   },
   {
     "Article ID": "KB-100",
@@ -249,7 +258,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: How is the ABS case saved and numbered?",
     "Step-by-Step Procedure": "1. Complete all required case fields and schedule review.\n2. Click Continue.\n3. Click Save.\n4. Wait for ABS to generate the unique case number.\n5. Confirm the case number is visible and/or the case can be found in Case Inquiry.\n6. Only then proceed to Rx upload and final QC.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "ABS Save and Case Number Generation"
+    "Title": "ABS Save and Case Number Generation",
+    "Search Intent Examples": "How do I save the ABS case? When do I get the case number?"
   },
   {
     "Article ID": "KB-101",
@@ -267,6 +277,7 @@
     "Purpose": "Provide a consistent Data Entry procedure for: When is the Rx uploaded to Case Photos?",
     "Step-by-Step Procedure": "1. Wait until the case is saved and the ABS case number exists.\n2. Open Case Photos.\n3. Find the correct case using the case number/patient information.\n4. Upload the Rx PDF.\n5. Verify the correct Rx is visible in the correct case.\n6. If the Rx cannot be verified, do not mark the case fully complete; follow the escalation path.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Rx Upload to Case Photos"
+    "Title": "Rx Upload to Case Photos",
+    "Search Intent Examples": "How do I upload Rx to Case Photos? Where do I attach the Rx after saving the case?"
   }
 ]
