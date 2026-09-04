@@ -9,12 +9,13 @@
     "Confirmed By": "Esther",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Support Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What if the doctor is identified in case notes/comments?",
     "Step-by-Step Procedure": "1. Review Notes/Comments for doctor-identifying information.\n2. Compare that doctor name with the Rx, practice/address, and 3Shape information.\n3. If the information reliably points to the same doctor, use that doctor in ABS.\n4. If the match is not reliable, do not select an unrelated doctor.\n5. Route/escalate for clarification.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Doctor Identification from Notes and Comments"
   },
   {
     "Article ID": "KB-052",
@@ -26,12 +27,13 @@
     "Confirmed By": "Esther",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Support Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: How should a fully spelled-out middle name be entered?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: How should a fully spelled-out middle name be entered?\n2. If the patient's middle name is fully spelled out, include it in the First Name field together with the first name.\n3. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n4. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Patient Middle Name Entry Standard"
   },
   {
     "Article ID": "KB-053",
@@ -43,12 +45,13 @@
     "Confirmed By": "Esther",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Support Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: How should two last names be entered?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: How should two last names be entered?\n2. If the patient has two last names, enter both last names together in the Last Name field.\n3. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n4. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Patient Two-Last-Name Entry Standard"
   },
   {
     "Article ID": "KB-054",
@@ -60,12 +63,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS case-entry practice",
     "Purpose": "Provide a consistent Data Entry procedure for: Is PAN Number required during initial entry?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: Is PAN Number required during initial entry?\n2. Training guidance treated PAN Number as an optional field for standard case creation and allowed it to be left blank when not required.\n3. The ABS case number remains the primary generated case identifier after saving.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "PAN Number Entry Requirement"
   },
   {
     "Article ID": "KB-060",
@@ -77,12 +81,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: What should be reviewed on the Rx before encoding?",
     "Step-by-Step Procedure": "1. Open the Rx before entering case details.\n2. Identify the doctor/practice.\n3. Identify the requested restoration/treatment.\n4. Confirm the tooth number and shade.\n5. Confirm the requested due date.\n6. Review special instructions, preferences, implant/Screw Retained indicators, routing notes, and model/product clues.\n7. Use the Rx as the primary case-specific instruction source and escalate unresolved inconsistencies.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Rx Review Requirements Before Encoding"
   },
   {
     "Article ID": "KB-061",
@@ -94,12 +99,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: What takes priority if the Rx conflicts with a default ABS value?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: What takes priority if the Rx conflicts with a default ABS value?\n2. Follow the doctor's Rx instructions for case-specific information such as shade and requested due date.\n3. Do not silently replace the Rx instruction with a default system suggestion.\n4. Escalate genuine conflicts that cannot be resolved from approved references.\n5. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n6. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Rx Instructions Versus ABS Default Values"
   },
   {
     "Article ID": "KB-062",
@@ -111,12 +117,13 @@
     "Confirmed By": "Esther",
     "Effective Date": "2026-09-04",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Sep 2026 Support Q&A",
     "Purpose": "Provide a consistent Data Entry procedure for: What document must be uploaded to the ABS case?",
     "Step-by-Step Procedure": "1. After the ABS case number is generated, open Case Photos.\n2. Locate the correct case using the case number/patient details.\n3. Upload the actual Rx form PDF.\n4. Do not use the Workticket alone as a substitute for the Rx.\n5. Verify the Rx is visible and attached to the correct case before completion.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Required Rx Document Upload"
   },
   {
     "Article ID": "KB-063",
@@ -128,12 +135,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "Live case-entry practice",
     "Purpose": "Provide a consistent Data Entry procedure for: How should the requested due date be entered?",
     "Step-by-Step Procedure": "1. Read the doctor-requested due date from the Rx.\n2. Enter that requested due date in ABS.\n3. If the calendar shows a closed date or schedule conflict, proceed to Generate Schedule rather than changing the requested date on your own.\n4. Review the generated schedule for any short-date exception.\n5. Follow the applicable scheduling/routing rule.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Requested Due Date Entry Procedure"
   },
   {
     "Article ID": "KB-064",
@@ -145,12 +153,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: How should shade be entered?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: How should shade be entered?\n2. Enter the shade exactly as instructed on the Rx.\n3. If the Rx gives a shade, use that value rather than a different default suggestion.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Shade Entry Procedure"
   },
   {
     "Article ID": "KB-065",
@@ -162,12 +171,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: What should be included in ABS case notes?",
     "Step-by-Step Procedure": "1. Open the case notes section.\n2. Enter the current date.\n3. Enter your initials.\n4. Enter the doctor's Rx requested due date when required.\n5. Add approved clarifications or observations needed for the case.\n6. If there is an inconsistency, document it and escalate; do not call the doctor from Data Entry unless formally reassigned.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "ABS Case Notes Requirements"
   },
   {
     "Article ID": "KB-070",
@@ -179,12 +189,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: Where are case products selected in ABS?",
     "Step-by-Step Procedure": "1. Open Services in ABS.\n2. Go to Lab.\n3. Choose the Digital Models service when applicable.\n4. Select the restoration/product that matches the Rx and current authorized Ninja scope.\n5. Check account/doctor-specific exceptions before saving.\n6. If the product is outside scope, reroute/escalate instead of selecting a closest substitute.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "ABS Product and Service Selection"
   },
   {
     "Article ID": "KB-071",
@@ -196,12 +207,13 @@
     "Confirmed By": "Client-led training / Esther",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "Training catalog visibility does not equal current authorization to process every material.",
     "Source Basis": "Training + current support scope",
     "Purpose": "Provide a consistent Data Entry procedure for: What product families were covered in training?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: What product families were covered in training?\n2. Training demonstrated SG Fixed Restoratives categories such as PFZ, Emax/Press, Zirconia, PFM, Gold, Composites, and Temporaries.\n3. However, the current confirmed Ninja production scope is narrower: process only the currently authorized 1-unit Zirconia Crown workflow unless Support expands scope.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Product Families Covered in Training"
   },
   {
     "Article ID": "KB-072",
@@ -213,12 +225,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: How is the tooth selected?",
     "Step-by-Step Procedure": "1. Read the tooth number from the Rx.\n2. Open the tooth selection in ABS.\n3. Select the exact tooth number.\n4. Click Save Selection.\n5. Recheck the selected tooth before saving the overall case.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Tooth Selection Procedure"
   },
   {
     "Article ID": "KB-073",
@@ -230,12 +243,13 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "",
     "Source Basis": "ABS Case Entry Process Training",
     "Purpose": "Provide a consistent Data Entry procedure for: What model types are available?",
     "Step-by-Step Procedure": "1. Review the case/tool context for: What model types are available?\n2. ABS may offer Full Model, Quadrant Model, and Mini Model / 3D-printed model choices.\n3. Always check Doctor Preferences and account-specific rules before using a default.\n4. Verify the result against the Rx, current scope, account/doctor preferences, and any newer Official guidance.\n5. If the situation is unclear or would require guessing, stop and escalate.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Available Model Types"
   },
   {
     "Article ID": "KB-074",
@@ -247,11 +261,12 @@
     "Confirmed By": "Client-led training",
     "Effective Date": "",
     "Last Updated": "2026-09-04",
-    "Version": "3.0",
+    "Version": "3.1",
     "Notes": "Do not apply this default to OCIN accounts.",
     "Source Basis": "Live case-entry practice",
     "Purpose": "Provide a consistent Data Entry procedure for: What is the default model for a standard single-unit posterior zirconia case with no doctor preference?",
     "Step-by-Step Procedure": "1. Confirm the case is a standard single-unit posterior Zirconia case.\n2. Check Doctor Preferences and account-specific exceptions.\n3. Confirm the account is not subject to a no-Mini rule such as OCIN.\n4. If no exception exists, select 3D Printed Mini Model.\n5. Recheck the model before generating the schedule.",
-    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess."
+    "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
+    "Title": "Default Model for Standard Single-Unit Posterior Zirconia"
   }
 ]
