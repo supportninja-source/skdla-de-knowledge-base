@@ -159,7 +159,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What ABS windows should be open before case entry?",
     "Step-by-Step Procedure": "1. Log in to ABS.\n2. Open New Order for case creation.\n3. Open Case Inquiry for duplicate/history checks.\n4. Open Case Photos for Rx/reference upload after the case number is created.\n5. Keep these windows available while processing so no required verification/document step is skipped.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Required ABS Windows for Case Entry"
+    "Title": "Required ABS Windows for Case Entry",
+    "Search Intent Examples": "How do I prepare ABS before entering a case? What windows do I need open in ABS?"
   },
   {
     "Article ID": "KB-041",
@@ -177,7 +178,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What duplicate check is required before creating a new ABS case?",
     "Step-by-Step Procedure": "1. Open Case Inquiry before creating a new case.\n2. Search using the patient name and verify the doctor/practice.\n3. Review prior case history and compare tooth/restoration information.\n4. If the same tooth/restoration appears to exist, treat it as a possible duplicate/remake and stop for clarification if unclear.\n5. If the history is for a different tooth and the new Rx is valid, continue as a new case.\n6. Only click New after the duplicate check is complete.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "ABS Duplicate and Case History Verification"
+    "Title": "ABS Duplicate and Case History Verification",
+    "Search Intent Examples": "How do I check if a case already exists? How do I check for duplicate cases in ABS?"
   },
   {
     "Article ID": "KB-042",
@@ -213,7 +215,8 @@
     "Purpose": "Provide a consistent Data Entry procedure for: How do you start a confirmed new case in ABS?",
     "Step-by-Step Procedure": "1. Complete the eligibility and duplicate checks first.\n2. In New Order, click New.\n3. Enter/verify doctor and practice information.\n4. Enter the patient name using the approved naming rules.\n5. Review the Rx and enter requested due date, shade, tooth, product/material, model, and Digital workflow.\n6. Add required notes.\n7. Generate the schedule and resolve any routing/schedule exception.\n8. Continue and Save to generate the ABS case number.\n9. Upload the Rx in Case Photos and complete final QC.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Starting a Confirmed New Case in ABS"
+    "Title": "Starting a Confirmed New Case in ABS",
+    "Search Intent Examples": "How do I enter a case in ABS? How do I create a new ABS case? What are the steps to encode a case?"
   },
   {
     "Article ID": "KB-044",
@@ -267,6 +270,7 @@
     "Purpose": "Provide a consistent Data Entry procedure for: What doctor information should be verified?",
     "Step-by-Step Procedure": "1. Open the Rx and identify the doctor/practice.\n2. Compare the doctor/practice with 3Shape and available office/address information.\n3. In ABS, select the matching doctor and verify the practice/ship-to information when applicable.\n4. Move away from selection controls to avoid accidental scrolling changes.\n5. Recheck the doctor before saving.\n6. If the doctor cannot be reliably matched, stop and escalate.",
     "Stop / Escalate When": "Stop and escalate whenever required information is missing, the case is outside current scope, the rule conflicts with newer Official guidance, or you would otherwise have to guess.",
-    "Title": "Doctor and Practice Verification"
+    "Title": "Doctor and Practice Verification",
+    "Search Intent Examples": "I see more than one doctor name. Which doctor should I use? How do I verify the correct doctor and practice?"
   }
 ]
