@@ -112,25 +112,6 @@
     "Search Intent Examples": "I only have the practice name and no doctor. I cannot identify the doctor."
   },
   {
-    "Article ID": "P-008",
-    "Category": "Pending Clarification",
-    "Question": "What is the authoritative anterior/posterior tooth-range chart for model selection?",
-    "Official Answer / SOP": "The full authoritative anterior/posterior tooth-range chart is still pending. However, one specific rule is now confirmed: when the case is anterior and involves an incisor, select the Full Arch model (see KB-079). Use the official visual/reference chart for tooth-range scenarios not covered by that confirmed rule.",
-    "Keywords": "anterior, posterior, tooth range, chart, model",
-    "Status": "Pending Confirmation",
-    "Confirmed By": "",
-    "Effective Date": "",
-    "Last Updated": "2026-09-05",
-    "Version": "Draft 3.2",
-    "Notes": "Specific confirmed exception: anterior/incisor = Full Arch per KB-079. The broader tooth-range chart remains pending.",
-    "Source Basis": "Client-led training transcript",
-    "Purpose": "Provide a consistent Data Entry procedure for: What is the authoritative anterior/posterior tooth-range chart for model selection?",
-    "Step-by-Step Procedure": "1. Stop at this decision point; do not invent or apply an unconfirmed rule.\n2. Review the Rx, case history, account/doctor preferences, tracker information, and related Official KB articles.\n3. Route/escalate the question to an authorized SKDLA support/lead contact.\n4. Document the temporary case disposition or route note according to the current approved workflow.\n5. After an official answer is received, update this Pending article before using the rule broadly.",
-    "Stop / Escalate When": "Always escalate this scenario until an official procedure is confirmed.",
-    "Title": "Pending: Anterior/Posterior Tooth-Range Model Chart",
-    "Search Intent Examples": "What is the anterior/posterior tooth range? Which model for a front tooth? This is an incisor/anterior case. What model should I select?"
-  },
-  {
     "Article ID": "KB-121",
     "Category": "Team Operations",
     "Question": "Who are the current five Ninja/Data Entry agents referenced in the team's operating setup?",
