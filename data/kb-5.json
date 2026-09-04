@@ -17,7 +17,7 @@
     "Article ID": "KB-110",
     "Category": "Tracker & Files",
     "Question": "What are the core case-management folders?",
-    "Official Answer / SOP": "The internal case automation uses an intake folder named "01 - Cases to Generate" for source PDFs and a completed/output folder named "02 - Completed Cases" (some earlier builds used "Completed Tagged Cases"). The tracker/workbook is kept in the designated Excel tracker area. Follow the current folder names deployed by the team and do not manually rename shared folders without updating the automation.",
+    "Official Answer / SOP": "The internal case automation uses an intake folder named “01 - Cases to Generate” for source PDFs and a completed/output folder named “02 - Completed Cases” (some earlier builds used “Completed Tagged Cases”). The tracker/workbook is kept in the designated Excel tracker area. Follow the current folder names deployed by the team and do not manually rename shared folders without updating the automation.",
     "Keywords": "01 Cases to Generate, 02 Completed Cases, folder, OneDrive, tracker",
     "Status": "Internal Tool SOP",
     "Confirmed By": "Internal automation design",
