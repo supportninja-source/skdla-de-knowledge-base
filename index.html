@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.8 • Yareli Due-Date Procedure Added • September 5, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.9 • Anterior/Incisor Full Arch Rule Added • September 5, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -98,6 +98,7 @@ function intentBoost(a,q){
   if(id==="KB-095"&&has(/(shipping|ship|carrier|ups|delivery).*(method|use|choose|select|supported)|(method|use|choose|select|supported).*(shipping|ship|carrier|ups|delivery)/))b+=28;
   if(id==="KB-091"&&has(/(how many|days|turnaround|processing|duration|how long).*(zirconia|workflow|process)|(zirconia|workflow|process).*(how many|days|turnaround|processing|duration|how long)/))b+=28;
   if(id==="KB-051"&&has(/(two|multiple|more than one).*(doctor|dentist)|(doctor|dentist).*(two|multiple|more than one)/))b+=30;
+  if(id==="KB-079"&&has(/(anterior|incisor|incisive|front tooth).*(model|full arch)|(model|full arch).*(anterior|incisor|incisive|front tooth)/))b+=34;
   if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
   if(id==="KB-080"&&has(/implant/))b+=24;
   if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
@@ -275,6 +276,8 @@ function detectIntent(q){
 
   if(has(/\b(qc|quality control|final check|before completing|before completion)\b/)) return "final_qc";
 
+  if(has(/\b(anterior|incisor|incisive|front tooth)\b/) && has(/\b(model|full arch|which model|what model|select)\b/)) return "anterior_model";
+
   return "generic";
 }
 function byId(id){return KB_DATA.find(a=>a["Article ID"]===id);}
@@ -446,6 +449,9 @@ function composeIntentAnswer(q,intent){
   }
   if(intent==="final_qc"){
     return {text:"Before completing a case, verify the doctor and practice, patient information, duplicate check, current scope and routing, product or material, tooth, model and preferences, shade, requested due date, notes, Digital workflow and generated schedule, ABS case number, and the Rx upload in Case Photos. Only complete the case after all of those checks pass.",ids:["KB-102"]};
+  }
+  if(intent==="anterior_model"){
+    return {text:"If the case is anterior and involves an incisor, select the Full Arch model in ABS. Recheck the model before generating the schedule. If the case involves a different tooth-range scenario or a doctor/account-specific preference conflicts with this rule, stop and verify the applicable guidance instead of guessing.",ids:["KB-079","KB-073","P-008"]};
   }
   return null;
 }
