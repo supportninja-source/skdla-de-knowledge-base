@@ -1,0 +1,86 @@
+
+<div class="app" id="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brandmark">3A</div><div><h1>3Shape → ABS</h1><small>Operations Hub</small></div></div>
+    <div class="nav" id="nav">
+      <button class="active" data-view="dashboard">▦ &nbsp; Dashboard</button>
+      <button data-view="scrape">⇧ &nbsp; Scrape Intake</button>
+      <button data-view="abs">✓ &nbsp; ABS Processing</button>
+      <div class="sep"></div>
+      <button data-view="reconciliation">⟷ &nbsp; Reconciliation</button>
+      <button data-view="pending">◷ &nbsp; Pending Queue</button>
+      <button data-view="unmatched">? &nbsp; Unmatched ABS</button>
+      <button data-view="clearpath">≋ &nbsp; ClearPath Control</button>
+      <div class="sep"></div>
+      <button data-view="productivity">↗ &nbsp; Shift Productivity</button>
+      <button data-view="hourly">◫ &nbsp; Hourly Activity</button>
+      <button data-view="history">▤ &nbsp; Historical View</button>
+      <button data-view="quality">⚠ &nbsp; Data Quality</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="title"><h2 id="pageTitle">Operations Dashboard</h2><small id="coverageText">Loading shift coverage…</small></div>
+      <div class="controls"><label class="muted">Shift Date</label><input id="shiftDate" class="input" type="date"><button id="reloadBtn" class="btn secondary">Refresh</button><span class="pill gray"><span id="liveDot" class="statusdot"></span><span id="serverTime">Connecting…</span></span></div>
+    </header>
+
+    <div class="content">
+      <section id="view-dashboard" class="view active">
+        <div class="banner"><div><h3>Selected operational shift</h3><p id="dashboardCoverage">—</p></div><div class="pill green" id="eodBadge">Loading…</div></div>
+        <div class="kpis" id="kpiGrid"></div>
+        <div class="grid2">
+          <div class="card"><div class="cardhead"><h3>Ninja outcomes — operational shift</h3><span class="helper">Completed + Escalated</span></div><div class="tablewrap"><table class="table"><thead><tr><th>Ninja</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Total</th></tr></thead><tbody id="ninjaOutcomeBody"></tbody></table></div></div>
+          <div class="card"><div class="cardhead"><h3>Carryover pending</h3><span class="helper">Older scrape cohorts</span></div><div class="cardbody" id="carryoverBox"></div></div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="cardhead"><h3>Recent cases in selected scrape cohort</h3><button class="btn secondary" onclick="showView('reconciliation')">Open Reconciliation</button></div><div class="tablewrap"><table class="table"><thead><tr><th>Tracker ID</th><th>Patient</th><th>Scraped By</th><th>Disposition</th><th>Processed By</th><th>Status</th></tr></thead><tbody id="recentBody"></tbody></table></div></div>
+      </section>
+
+      <section id="view-scrape" class="view">
+        <div class="sectiontitle"><div><h3>Scrape Intake</h3><p>Log a 3Shape/SharePoint case with automatic Manila timestamp and operational shift date.</p></div></div>
+        <div class="grid2">
+          <div class="card"><div class="cardhead"><h3>New scraped case</h3></div><div class="cardbody">
+            <div id="scrapeMessage"></div>
+            <div class="formgrid">
+              <div class="field full"><label>PDF file — local name detection</label><div class="drop"><input type="file" id="pdfFile" accept="application/pdf"><div class="helper" style="margin-top:8px">The selected PDF is parsed in your browser for patient-name detection. The PDF itself is not stored in GitHub or sent to this web app.</div></div></div>
+              <div class="field full"><label>Patient Name</label><input id="scrapePatient" placeholder="Automatically detected or enter manually"></div>
+              <div class="field full"><label>3Shape / SharePoint / PDF Link</label><input id="scrapeLink" placeholder="Paste the source link"></div>
+              <div class="field"><label>Scraped By</label><select id="scrapeNinja"></select></div>
+              <div class="field"><label>Upload Status</label><select id="uploadStatus"><option>Uploaded</option><option>Pending Upload</option><option>Upload Issue</option></select></div>
+              <div class="field full"><button class="btn primary" id="saveScrapeBtn">Save to Scrape Log</button></div>
+            </div>
+          </div></div>
+          <div class="card"><div class="cardhead"><h3>What happens automatically</h3></div><div class="cardbody"><div class="notice info">Timestamp, operational Shift Date, normalized patient keys, Tracker IDs and link matching formulas continue to use the existing tracker logic.</div><div class="metricrow"><span>Operational shift</span><strong>9:00 PM → 8:00 AM</strong></div><div class="metricrow"><span>Target source</span><strong>Current Google Sheet</strong></div><div class="metricrow"><span>PDF storage</span><strong>Not committed to GitHub</strong></div></div></div>
+        </div>
+      </section>
+
+      <section id="view-abs" class="view">
+        <div class="sectiontitle"><div><h3>ABS Processing</h3><p>Paste the case PDF link, then complete or escalate. Required fields are enforced before saving.</p></div></div>
+        <div class="card"><div class="cardbody"><div id="absMessage"></div><div class="formgrid">
+          <div class="field full"><label>PDF Link</label><input id="absLink" placeholder="Paste the same PDF/source link used for reconciliation"></div>
+          <div class="field"><label>Processed By Ninja</label><select id="absNinja"></select></div>
+          <div class="field"><label>Disposition</label><select id="absDisposition"><option value="Completed">Completed</option><option value="Escalated">Escalated</option></select></div>
+          <div class="field"><label>ABS Case ID</label><input id="absCaseId" placeholder="Required when Completed"></div>
+          <div class="field"><label>Escalation Reason</label><input id="absEscalation" placeholder="Required when Escalated"></div>
+          <div class="field full"><label>Outcome Notes</label><textarea id="absNotes" placeholder="Optional backup notes / callout details"></textarea></div>
+          <div class="field full"><button class="btn primary" id="saveAbsBtn">Save ABS Outcome</button></div>
+        </div></div></div>
+      </section>
+
+      <section id="view-reconciliation" class="view"><div class="sectiontitle"><div><h3>Reconciliation</h3><p>Every scraped case and its current ABS disposition for the selected scrape cohort.</p></div><div class="toolbar"><select id="reconFilter" class="select"><option>ALL</option><option>PENDING</option><option>COMPLETED</option><option>ESCALATED</option><option>ISSUES</option></select><button class="btn secondary" onclick="loadReconciliation()">Apply</button></div></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>Tracker ID</th><th>Patient</th><th>Scrape Time</th><th>Scraped By</th><th>Disposition</th><th>ABS ID</th><th>Processed By</th><th>Reconciliation Status</th><th>Action</th></tr></thead><tbody id="reconBody"></tbody></table></div></div></section>
+      <section id="view-pending" class="view"><div class="sectiontitle"><div><h3>Pending Queue</h3><p>Cases from the selected Scrape Shift Date that do not yet have a Completed/Escalated disposition.</p></div><button class="btn secondary" onclick="loadPending()">Refresh Queue</button></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>Tracker ID</th><th>Patient</th><th>Scraped By</th><th>Age (hrs)</th><th>Source Link</th><th>EOD Action</th></tr></thead><tbody id="pendingBody"></tbody></table></div></div></section>
+      <section id="view-unmatched" class="view"><div class="sectiontitle"><div><h3>Unmatched ABS</h3><p>ABS entries that have not matched the scrape population.</p></div><button class="btn secondary" onclick="loadUnmatched()">Refresh</button></div><div class="card"><div class="tablewrap"><table class="table" id="unmatchedTable"></table></div></div></section>
+
+      <section id="view-clearpath" class="view"><div class="sectiontitle"><div><h3>ClearPath Queue Control</h3><p>Reconciles the selected scrape cohort so raw unrelated ABS rows do not create a false queue difference.</p></div></div><div class="kpis" id="clearpathKpis"></div><div class="grid2"><div class="card"><div class="cardhead"><h3>Manual queue inputs</h3></div><div class="cardbody"><div id="clearpathMessage"></div><div class="formgrid"><div class="field"><label>Opening ClearPath Queue</label><input id="cpOpening" type="number" min="0"></div><div class="field"><label>Closing ClearPath Queue</label><input id="cpClosing" type="number" min="0"></div><div class="field"><label>Other / Client Uploads</label><input id="cpOther" type="number" min="0"></div><div class="field" style="align-self:end"><button class="btn primary" id="saveClearpathBtn">Save Queue Inputs</button></div></div></div></div><div class="card"><div class="cardhead"><h3>Queue equation</h3><span id="cpStatus" class="pill gray">—</span></div><div class="cardbody" id="clearpathEquation"></div></div></div></section>
+
+      <section id="view-productivity" class="view"><div class="sectiontitle"><div><h3>Shift Productivity</h3><p>12 cases/hour, prorated for break, lunch, off-shift minutes and the selected shift's scraper cycle.</p></div><div class="toolbar"><select id="prodNinjaFilter" class="select"></select><button class="btn secondary" onclick="renderProductivity()">Filter</button></div></div><div class="card" style="margin-bottom:16px"><div class="tablewrap"><table class="table"><thead><tr><th>Ninja</th><th class="right">Target</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Actual</th><th class="right">Attainment</th></tr></thead><tbody id="prodSummaryBody"></tbody></table></div></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>Ninja</th><th>Interval</th><th>Activity</th><th class="right">Target</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Actual</th><th>Status</th><th>Adjustment</th><th>Miss Reason</th></tr></thead><tbody id="prodRowsBody"></tbody></table></div></div></section>
+
+      <section id="view-hourly" class="view"><div class="sectiontitle"><div><h3>Hourly Activity</h3><p>Workload snapshot by Ninja and one-hour interval.</p></div><select id="hourSelect" class="select" onchange="renderHourlyInterval()"></select></div><div class="card" style="margin-bottom:16px"><div class="tablewrap"><table class="table"><thead><tr><th>Ninja</th><th class="right">Scraped</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Total ABS</th></tr></thead><tbody id="hourTotalsBody"></tbody></table></div></div><div class="card"><div class="cardhead"><h3 id="hourCardTitle">Selected hour</h3></div><div class="tablewrap"><table class="table"><thead><tr><th>Ninja</th><th class="right">Scraped</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Total ABS</th></tr></thead><tbody id="hourIntervalBody"></tbody></table></div></div></section>
+
+      <section id="view-history" class="view"><div class="sectiontitle"><div><h3>Historical View</h3><p>Shift-level totals using the same overnight operational Shift Date.</p></div><div class="toolbar"><input type="date" class="input" id="histFrom"><input type="date" class="input" id="histTo"><button class="btn secondary" onclick="loadHistory()">Load</button></div></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>Shift Date</th><th class="right">Scraped</th><th class="right">Completed</th><th class="right">Escalated</th><th class="right">Pending</th><th class="right">Reconciled</th><th class="right">Rate</th></tr></thead><tbody id="historyBody"></tbody></table></div></div></section>
+      <section id="view-quality" class="view"><div class="sectiontitle"><div><h3>Data Quality</h3><p>Missing ABS IDs, missing escalation reasons, and multiple ABS updates in the selected cohort.</p></div><button class="btn secondary" onclick="loadQuality()">Refresh</button></div><div class="card"><div class="tablewrap"><table class="table"><thead><tr><th>Tracker ID</th><th>Patient</th><th>Disposition</th><th>Processed By</th><th>Issue</th><th>Recommended Action</th></tr></thead><tbody id="qualityBody"></tbody></table></div></div></section>
+    </div>
+  </main>
+</div>
+
+<div id="reasonModal" class="modalback"><div class="modal"><div class="modalhead">Productivity miss reason</div><div class="modalbody"><div id="reasonContext" class="notice info"></div><div class="field"><label>Reason</label><textarea id="reasonText"></textarea></div></div><div class="modalfoot"><button class="btn secondary" onclick="closeReasonModal()">Cancel</button><button class="btn primary" onclick="saveReason()">Save Reason</button></div></div></div>
