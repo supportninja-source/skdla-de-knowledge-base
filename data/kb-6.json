@@ -150,6 +150,25 @@
     "Search Intent Examples": "Legacy Dental doctor. Which doctor do I use for Legacy Dental? Who is the doctor for Legacy? I cannot find the doctor for Legacy Dental in ABS."
   },
   {
+    "Article ID": "KB-140",
+    "Category": "Rx Review",
+    "Question": "How should multilayered zirconia, Porcelain/Ceramic Zirconia, and multiple shades on the Rx be handled?",
+    "Official Answer / SOP": "If the Rx notes contain the wording 'multilayered zirconia,' escalate the case even when it is a single-unit Zirconia case because multilayered zirconia is treated as PFZ for this workflow. If the Rx contains more than one shade, include all shades listed in the Rx notes. If the material is written as Porcelain/Ceramic Zirconia, proceed with case entry unless another separate escalation rule applies.",
+    "Keywords": "multilayered zirconia, multilayer zirconia, PFZ, Porcelain Ceramic Zirconia, porcelain/ceramic zirconia, multiple shades, more than one shade, two shades, Rx notes, escalate, proceed",
+    "Status": "Official",
+    "Confirmed By": "Current process clarification",
+    "Effective Date": "2026-09-18",
+    "Last Updated": "2026-09-18",
+    "Version": "1.0",
+    "Notes": "These are Rx-specific material and shade rules. 'Multilayered zirconia' overrides the normal single-unit Zirconia processing path and requires escalation.",
+    "Source Basis": "Current team process clarification provided September 2026",
+    "Purpose": "Define how to handle specific Zirconia wording and multiple shade instructions found in Rx notes.",
+    "Step-by-Step Procedure": "1. Review the Rx notes and material wording before continuing case entry.\n2. If the Rx notes say 'multilayered zirconia,' stop normal entry and escalate the case, even if it is a single-unit Zirconia case, because it is treated as PFZ.\n3. If the Rx says Porcelain/Ceramic Zirconia, proceed with case entry unless another independent escalation condition is present.\n4. Review every shade listed in the Rx notes.\n5. If more than one shade is listed, enter/include all shades exactly as instructed on the Rx rather than selecting only one.\n6. Continue the normal case-entry and QC process after applying the correct material and shade rule.",
+    "Stop / Escalate When": "Always escalate when 'multilayered zirconia' appears in the Rx notes. Escalate any material description that remains unclear or conflicts with another confirmed routing rule.",
+    "Title": "Rx Zirconia Material & Multiple-Shade Handling",
+    "Search Intent Examples": "The Rx says multilayered zirconia. Can I enter it? It is single-unit zirconia but notes say multilayered. Is multilayered zirconia PFZ? The Rx has two shades. Which shade do I enter? There are multiple shades in the Rx notes. The Rx says Porcelain/Ceramic Zirconia. Can I proceed?"
+  },
+  {
     "Article ID": "KB-121",
     "Category": "Team Operations",
     "Question": "Who are the current five Ninja/Data Entry agents referenced in the team's operating setup?",
