@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>Incisive Model Selection Visual Guide</b><br><span style="font-size:13px;color:#46566a">See anterior/posterior tooth ranges and Full Arch vs Quadrant examples.</span></div><a href="./model-selection-guide.html">Open Visual Guide</a></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.11 • Incisive Visual Model Guide Added • September 5, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.12 • Yareli Inlay/Onlay + Multiple Rx Rules • September 25, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -101,6 +101,8 @@ function intentBoost(a,q){
   if(id==="KB-079"&&has(/(anterior|incisor|incisive|front tooth).*(model|full arch)|(model|full arch).*(anterior|incisor|incisive|front tooth)/))b+=34;
   if(id==="KB-096"&&has(/aspen/)&&has(/(short|shorted|shortage|schedule|day|days)/))b+=38;
   if(id==="KB-097"&&has(/(incisive|anterior|posterior|mini|quadrant|full arch|tooth range|teeth)/))b+=40;
+  if(id==="KB-141"&&has(/(inlay|onlay)/)&&has(/(zirconia|mono|monolithic|emax|escalate|oc)/))b+=45;
+  if(id==="KB-142"&&has(/(two|2|multiple|second|additional|partial)/)&&has(/(rx|scan|scans|prescription)/))b+=45;
   if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
   if(id==="KB-080"&&has(/implant/))b+=24;
   if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
@@ -290,6 +292,13 @@ function detectIntent(q){
   if(has(/\b(three|3)\b/) && has(/\bposterior\b/) && has(/\b(opposing|opposite|different side|sides)\b/)) return "incisive_three_posterior";
   if(has(/\banterior\b/) && has(/\bposterior\b/) && has(/\b(two|2|model|which|what)\b/)) return "incisive_mixed";
   if(has(/\bincisive\b/) && has(/\b(model|quadrant|full arch|posterior|anterior)\b/)) return "incisive_model";
+
+  if(has(/\b(inlay|onlay)\b/) && has(/\b(zirconia|mono|monolithic|emax|escalate|oc|orange county)\b/)) return "zirconia_inlay_onlay";
+
+  if(has(/\b(two|2|multiple|second|additional)\b/) && has(/\b(rx|scan|scans|prescription)\b/) &&
+     has(/\b(same patient|upload|attach|partial|additional|together|to add)\b/)) return "multiple_rx_scan";
+
+  if(has(/\b(partial)\b/) && has(/\b(scan|rx|additional|to add|need under)\b/)) return "multiple_rx_scan";
 
   return "generic";
 }
@@ -492,6 +501,12 @@ function composeIntentAnswer(q,intent){
   }
   if(intent==="incisive_model"){
     return {text:"For Incisive cases, do not use Mini models. Use Quadrant or Full Arch depending on the tooth combination: anterior/incisor uses Full Arch; anterior + posterior uses Full Arch; three posterior teeth on opposing sides use Full Arch; and two posterior teeth on the same arch/next to each other use Quadrant. Check the visual guide and Doctor Preferences before finalizing.",ids:["KB-097","KB-079","KB-073"]};
+  }
+  if(intent==="zirconia_inlay_onlay"){
+    return {text:"If the Rx is for a single-unit Zirconia Monolithic Inlay or Onlay, escalate the case to Orange County (OC). Yareli clarified that this Inlay/Onlay material/design is handled as EMAX for routing purposes, so it should not be processed as a normal single-unit Zirconia Crown. This is a valid escalation.",ids:["KB-141","KB-082","KB-071"]};
+  }
+  if(intent==="multiple_rx_scan"){
+    return {text:"If the same patient has two Rx files and the second Rx/scan is an additional scan for the same case, upload both Rx files together under the same ABS case. However, if the second scan specifically says 'to add' or 'need under partial,' add that scan under Partial instead. Verify that both files belong to the same patient/case before completion.",ids:["KB-142","KB-062","KB-101"]};
   }
   return null;
 }
