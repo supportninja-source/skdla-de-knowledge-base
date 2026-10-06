@@ -49,7 +49,7 @@ h1{margin:8px 0 6px;font-size:clamp(30px,5vw,50px);line-height:1.05}.subtitle{ma
 <div class="notice"><b>Authority rule:</b> “Official” means confirmed production guidance. “Training Guidance” preserves client-led training but may be superseded by newer Support answers. “Internal Team SOP” covers approved internal team operating procedures. “Pending Confirmation” is not an official instruction.</div><div class="feature"><div><b>ClearPath Case Assignment Procedure</b><br><span style="font-size:13px;color:#46566a">ClearPath is the current case-assignment tool. The detailed grab-case procedure will be added after the official steps are provided.</span></div><span style="font-size:12px;font-weight:800;color:#8a5b00">PROCEDURE PENDING</span></div><div class="feature"><div><b>Incisive Model Selection Visual Guide</b><br><span style="font-size:13px;color:#46566a">See anterior/posterior tooth ranges and Full Arch vs Quadrant examples.</span></div><a href="./model-selection-guide.html">Open Visual Guide</a></div><div class="feature"><div><b>ABS Case Entry Policy & Procedure</b><br><span style="font-size:13px;color:#46566a">Use the dedicated start-to-finish ABS checklist for live case entry.</span></div><a href="./abs-case-entry.html">Open ABS Step-by-Step</a></div>
 <section class="grid" id="results"></section><div class="empty" id="emptyState"><b>No matching article found.</b><br>Try another keyword, category, or authority filter.</div><div class="error" id="errorState"></div>
 </main>
-<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.12 • Yareli Inlay/Onlay + Multiple Rx Rules • September 25, 2026</footer>
+<footer class="footer">SKDLA Data Entry Knowledge Base • Version 3.13 • Zirconia Rx & Arch Model Rules • October 7, 2026</footer>
 <script>
 let KB_DATA=[];
 const DATA_FILES=["data/kb-1.json","data/kb-2.json","data/kb-3.json","data/kb-4.json","data/kb-5.json","data/kb-6.json"];
@@ -103,6 +103,8 @@ function intentBoost(a,q){
   if(id==="KB-097"&&has(/(incisive|anterior|posterior|mini|quadrant|full arch|tooth range|teeth)/))b+=40;
   if(id==="KB-141"&&has(/(inlay|onlay)/)&&has(/(zirconia|mono|monolithic|emax|escalate|oc)/))b+=45;
   if(id==="KB-142"&&has(/(two|2|multiple|second|additional|partial)/)&&has(/(rx|scan|scans|prescription)/))b+=45;
+  if(id==="KB-140"&&has(/(layered|multilayered|esthetic|aesthetic|porcelain|ceramic|shade|shades)/)&&has(/(zirconia|shade|shades)/))b+=46;
+  if(id==="KB-143"&&has(/zirconia/)&&has(/upper/)&&has(/lower/)&&has(/(arch|arches|print|model)/))b+=46;
   if(id==="P-004"&&has(/(doctor|dentist).*(not found|missing|not showing|cannot find|cant find)|(not found|missing|not showing|cannot find|cant find).*(doctor|dentist)/))b+=30;
   if(id==="KB-080"&&has(/implant/))b+=24;
   if(id==="KB-081"&&has(/screw.*retained|retained.*screw/))b+=28;
@@ -299,6 +301,12 @@ function detectIntent(q){
      has(/\b(same patient|upload|attach|partial|additional|together|to add)\b/)) return "multiple_rx_scan";
 
   if(has(/\b(partial)\b/) && has(/\b(scan|rx|additional|to add|need under)\b/)) return "multiple_rx_scan";
+
+  if(has(/\b(layered|multilayered|multi layered)\b/) && has(/\bzirconia\b/)) return "layered_zirconia";
+  if(has(/\b(esthetic|aesthetic)\b/) && has(/\bzirconia\b/)) return "esthetic_zirconia";
+  if(has(/\b(porcelain ceramic|porcelain\/ceramic)\b/) && has(/\bzirconia\b/)) return "porcelain_ceramic_zirconia";
+  if(has(/\b(two|2|multiple|more than one)\b/) && has(/\bshade|shades\b/)) return "multiple_shades";
+  if(has(/\bzirconia\b/) && has(/\bupper\b/) && has(/\blower\b/) && has(/\barch|arches|print|model\b/)) return "upper_lower_arch_model";
 
   return "generic";
 }
@@ -507,6 +515,21 @@ function composeIntentAnswer(q,intent){
   }
   if(intent==="multiple_rx_scan"){
     return {text:"If the same patient has two Rx files and the second Rx/scan is an additional scan for the same case, upload both Rx files together under the same ABS case. However, if the second scan specifically says 'to add' or 'need under partial,' add that scan under Partial instead. Verify that both files belong to the same patient/case before completion.",ids:["KB-142","KB-062","KB-101"]};
+  }
+  if(intent==="layered_zirconia"){
+    return {text:"If the Rx notes say layered zirconia or multilayered zirconia, stop normal case entry and escalate the case to Orange County (OC). This wording should not be processed as a regular Zirconia case. Multilayered Zirconia had previously been clarified as PFZ-related for this workflow.",ids:["KB-140","KB-082"]};
+  }
+  if(intent==="esthetic_zirconia"){
+    return {text:"If the Rx says Esthetic Zirconia, proceed with case entry. Esthetic Zirconia is treated as regular Zirconia for this workflow unless another separate escalation rule is present on the case.",ids:["KB-140"]};
+  }
+  if(intent==="porcelain_ceramic_zirconia"){
+    return {text:"If the Rx says Porcelain/Ceramic Zirconia, proceed with case entry unless another independent escalation condition applies. Treat this wording as an allowed Zirconia entry under the current guidance.",ids:["KB-140"]};
+  }
+  if(intent==="multiple_shades"){
+    return {text:"If the Rx notes contain more than one shade, enter and include all shades listed on the Rx. Do not choose only one shade when multiple shades are specifically provided.",ids:["KB-140","KB-064"]};
+  }
+  if(intent==="upper_lower_arch_model"){
+    return {text:"If a single- or multiple-unit Zirconia Rx specifically states that both the upper and lower arch should be printed, select the Full Arch model. Recheck the model against the Rx notes before generating the schedule. If the arch wording is different or unclear, verify the applicable model rule instead of guessing.",ids:["KB-143","KB-073"]};
   }
   return null;
 }
