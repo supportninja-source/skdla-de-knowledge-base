@@ -11,3 +11,5 @@
 .assistant-status{margin:20px 0;padding:16px 20px;background:#f0f7f4;border-radius:8px;border:1px solid #d5e6de}.assistant-status p{font-size:12px;line-height:1.6}.source-card details{margin:12px 0;font-size:12px}.source-card summary{cursor:pointer;color:#17685b}.source-card blockquote{display:none}.assistant-status strong{font-size:13px}
 
 #answer{display:block;margin-top:20px;border:2px solid #9cbfb5;background:#f3faf7;min-height:150px}#answerTitle{font-size:23px}.assistant-status{margin-top:16px;padding:10px 16px}.assistant-status .ai-disclosure{font-size:11px}#answerText>p{font-size:15px}#answerSources h4{margin-top:24px}
+
+.answer-steps{padding-left:26px;white-space:normal}.answer-steps li{padding-left:6px;margin:0 0 14px;line-height:1.8}.answer-steps li::marker{font-weight:700;color:#17685b}
