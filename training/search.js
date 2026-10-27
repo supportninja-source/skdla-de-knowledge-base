@@ -25,6 +25,13 @@
   return out;
  }
  const caches=new WeakMap();
+ function makeDocumentIndex(documents){
+  return documents.flatMap(d=>d.sections.map(s=>({id:d.id+'-'+s.id,kind:'document',section:s.id,recordId:d.id,recordTitle:d.title,title:s.title,
+   text:s.content.join('\n'),paragraphs:s.content.slice(),category:d.category,uncertainties:d.uncertainties||[],aliases:[],purpose:s.steps?'procedure':'reference',
+   locator:typeof s.page==='number'?(d.format==='PDF'?'PDF page '+s.page+(s.pageEnd!==s.page?'–'+s.pageEnd:''):'Image reference'):String(s.page),
+   sourceUrl:d.sourceUrl||d.fileUrl+(d.format==='PDF'&&typeof s.page==='number'?'#page='+s.page:''),revision:d.revision,
+   words:tokens(s.title+' '+s.content.join(' ')),titleWords:tokens(s.title)})));
+ }
  function stats(index){
   if(caches.has(index))return caches.get(index);
   const df=new Map();let length=0;
@@ -81,5 +88,5 @@
  }
  function coverage(index,records){return {recordings:records.length,unique:records.filter(r=>!r.duplicateOf).length,sections:index.length,passages:index.reduce((n,s)=>n+s.paragraphs.length,0)}}
  function scorePassages(query,source,index){const meta=stats(index);return (source.paragraphs||source.text.split('\n')).map((text,n)=>({...passageScore(query,text,source.title,meta,index.length),text,n}));}
- const api={norm,tokens,forms,makeIndex,rank,compatible,semanticDocs,coverage,scorePassages};root.TrainingSearch=api;if(typeof module!=='undefined')module.exports=api;
+ const api={norm,tokens,forms,makeIndex,makeDocumentIndex,rank,compatible,semanticDocs,coverage,scorePassages};root.TrainingSearch=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
