@@ -12,7 +12,8 @@
   const parts=plan(query),all=[];
   for(const part of parts){
    const lexical=S.rank(part,index,24), byId=new Map(lexical.map(s=>[s.id,s]));
-   const pinned=(root.ProcessAnswers?.pinned(part,index)||[]).filter(s=>S.compatible(part,s)).map(s=>({...s,...byId.get(s.id),pinned:true}));
+   const documentPins=root.CSRAnswers?.pinned(part,index)||[];
+   const pinned=(documentPins.length?documentPins:(root.ProcessAnswers?.pinned(part,index)||[])).filter(s=>S.compatible(part,s)).map(s=>({...s,...byId.get(s.id),pinned:true}));
    const sorted=scores?lexical.map((s,i)=>({...s,hybrid:(1/(i+2))*.7+(scores.get(s.id)||0)*.3})).sort((a,b)=>b.hybrid-a.hybrid):lexical;
    all.push(...pinned,...sorted.slice(0,8));
   }
@@ -20,6 +21,7 @@
  }
  function composeOne(query,sources,S){
   if(!sources.length)return {blocks:[],clarification:'Please name the tool, task, and account type. These recordings do not establish an answer to this question.'};
+  const documented=root.CSRAnswers?.compose(query,sources);if(documented)return documented;
   if(/mb2|aspen|incisive|clearchoice|carabelli|trri/i.test(query)&&/create|new|onboard|set up|setup/i.test(query)&&/account/i.test(query)&&!/principal|doctor|subaccount|portal|login|ar |pricing/i.test(query))
    return {blocks:[],needsDetails:true,clarification:'Do you need the billing principal, a doctor subaccount, portal access, or AR setup? These are separate workflows. Please specify the account level and whether the location is OC or LA.'};
   if(/\bcancel|cancellation/i.test(query)&&/\balready\b.*\b(entered|fabricated|invoiced)\b|\bafter\b.*\b(entry|fabrication|invoicing)\b/i.test(query))
@@ -41,7 +43,7 @@
  function compose(query,sources,S){
   const parts=plan(query);
   const groups=parts.map(part=>{
-   const ranked=parts.length===1?sources.filter(s=>S.compatible(part,s)):S.rank(part,sources,sources.length),pinned=(root.ProcessAnswers?.pinned(part,sources)||[]).filter(s=>S.compatible(part,s));
+   const ranked=parts.length===1?sources.filter(s=>S.compatible(part,s)):S.rank(part,sources,sources.length),docPins=root.CSRAnswers?.pinned(part,sources)||[],pinned=(docPins.length?docPins:(root.ProcessAnswers?.pinned(part,sources)||[])).filter(s=>S.compatible(part,s));
    const ordered=[...new Map([...pinned,...ranked].map(s=>[s.id,s])).values()];
    const result=composeOne(part,ordered,S);
    const used=new Set(result.blocks.map(b=>b.source)),terms=S.tokens(part);

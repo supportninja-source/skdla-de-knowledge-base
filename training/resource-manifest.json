@@ -1,0 +1,243 @@
+{
+  "imported": "2026-10-27",
+  "archive": "drive-download-20261027T124220Z-1-001.zip",
+  "sourceFiles": [
+    {
+      "filename": "Business Unit Leaders.docx.pdf",
+      "sha256": "7a83d1848bf2bc52cfca41cd4859c8356874f498a42ebb9fd5c91034d12fd4fe",
+      "size": 53885,
+      "pages": 2,
+      "page_chars": [
+        695,
+        488
+      ],
+      "site_path": "files/business-unit-leaders-docx.pdf",
+      "sanitized": false,
+      "published_sha256": "7a83d1848bf2bc52cfca41cd4859c8356874f498a42ebb9fd5c91034d12fd4fe"
+    },
+    {
+      "filename": "Product Specific Training (PST) Schedule.pdf",
+      "sha256": "f9e65a5135958d6e7a77ac0f5f70951af2065c650c0002691dec5b4f6a3db70e",
+      "size": 65984,
+      "pages": 1,
+      "page_chars": [
+        1246
+      ],
+      "site_path": "files/product-specific-training-pst-schedule.pdf",
+      "sanitized": false,
+      "published_sha256": "f9e65a5135958d6e7a77ac0f5f70951af2065c650c0002691dec5b4f6a3db70e"
+    },
+    {
+      "filename": "CSR CALLNOTE GUIDE.pdf",
+      "sha256": "1664b2fe108ae7076f4deb673cd698b80059d0d72b563bc3d081591dcb95d898",
+      "size": 82683,
+      "pages": 4,
+      "page_chars": [
+        311,
+        642,
+        771,
+        170
+      ],
+      "site_path": "files/csr-callnote-guide.pdf",
+      "sanitized": false,
+      "published_sha256": "1664b2fe108ae7076f4deb673cd698b80059d0d72b563bc3d081591dcb95d898"
+    },
+    {
+      "filename": "SKDLA Professional Email Standards.docx.pdf",
+      "sha256": "306d971ff9175cc99eb017a85b1c0e1efcc18d77eef1b42d24c4d47b36f2628c",
+      "size": 52162,
+      "pages": 1,
+      "page_chars": [
+        1460
+      ],
+      "site_path": "files/skdla-professional-email-standards-docx.pdf",
+      "sanitized": false,
+      "published_sha256": "306d971ff9175cc99eb017a85b1c0e1efcc18d77eef1b42d24c4d47b36f2628c"
+    },
+    {
+      "filename": "📘 Customer Service Workflow Training Guide.pdf",
+      "sha256": "951bf9fde959659b9168effe58f468b375765394432350879bc2ac5757f38998",
+      "size": 184076,
+      "pages": 5,
+      "page_chars": [
+        119,
+        1073,
+        1132,
+        985,
+        954
+      ],
+      "site_path": "files/customer-service-workflow-training-guide.pdf",
+      "sanitized": false,
+      "published_sha256": "951bf9fde959659b9168effe58f468b375765394432350879bc2ac5757f38998"
+    },
+    {
+      "filename": "SKDLA Account Overview .pdf",
+      "sha256": "187cf0f6f79be0c88d273960161901c37ed2eca15832e5423c4258c809c2dc45",
+      "size": 556248,
+      "pages": 20,
+      "page_chars": [
+        67,
+        282,
+        937,
+        736,
+        34,
+        347,
+        1031,
+        698,
+        1565,
+        865,
+        958,
+        1105,
+        525,
+        299,
+        747,
+        881,
+        776,
+        513,
+        1188,
+        10
+      ],
+      "site_path": "files/skdla-account-overview.pdf",
+      "sanitized": false,
+      "published_sha256": "187cf0f6f79be0c88d273960161901c37ed2eca15832e5423c4258c809c2dc45"
+    },
+    {
+      "filename": "Tooth Numbers.pdf",
+      "sha256": "ca16293cbe22bd34bab21df4569dedb85db2d6635119d914c89dc40e228de8e5",
+      "size": 311681,
+      "pages": 1,
+      "page_chars": [
+        0
+      ],
+      "site_path": "files/tooth-numbers.pdf",
+      "sanitized": false,
+      "published_sha256": "ca16293cbe22bd34bab21df4569dedb85db2d6635119d914c89dc40e228de8e5"
+    },
+    {
+      "filename": "Common Call Drivers and Resolution.xlsx",
+      "sha256": "ac0b8228ab8292995a9e90cb32857fab4a452e42c08e2e98a54006294429c18b",
+      "size": 6844,
+      "sheets": {
+        "Sheet1": 20
+      },
+      "site_path": "files/common-call-drivers-and-resolution.xlsx",
+      "sanitized": false,
+      "published_sha256": "ac0b8228ab8292995a9e90cb32857fab4a452e42c08e2e98a54006294429c18b"
+    },
+    {
+      "filename": "PAN ID.png",
+      "sha256": "65f0234b770c00eb0e3c06f71053aebb78995b77014c50bfe4ebdb7797859525",
+      "size": 352765,
+      "site_path": "files/pan-id.png",
+      "sanitized": false,
+      "published_sha256": "65f0234b770c00eb0e3c06f71053aebb78995b77014c50bfe4ebdb7797859525"
+    },
+    {
+      "filename": "FedEx Pickup & Label Returns SOP.pdf",
+      "sha256": "831f9b7f98f6ef10f2019e1834d997d07b85b33efb725977b43fd8359d993fa6",
+      "size": 63057,
+      "pages": 2,
+      "page_chars": [
+        1909,
+        189
+      ],
+      "site_path": "files/fedex-pickup-label-returns-sop.pdf",
+      "sanitized": true,
+      "published_sha256": "8864ca3cc26e1d0bf292184e69a5dc619a81e0e42eb0558f87129395d8aa422a"
+    },
+    {
+      "filename": "SKDLA Phone Script - Case Pick Up.pdf",
+      "sha256": "f5cada0a0089038187e7001c6b43cd56e9964f44aa5cca0d539b2f8e4e13abfb",
+      "size": 451250,
+      "pages": 1,
+      "page_chars": [
+        0
+      ],
+      "site_path": "files/skdla-phone-script-case-pick-up.pdf",
+      "sanitized": false,
+      "published_sha256": "f5cada0a0089038187e7001c6b43cd56e9964f44aa5cca0d539b2f8e4e13abfb"
+    },
+    {
+      "filename": "UPS Pick-Up and Label Guide.pdf",
+      "sha256": "a0dd461538fe182d15f01a722b1cf12e9157c3a801386f76cb0bc9c4c9528fd3",
+      "size": 81752,
+      "pages": 2,
+      "page_chars": [
+        1221,
+        1651
+      ],
+      "site_path": "files/ups-pick-up-and-label-guide.pdf",
+      "sanitized": true,
+      "published_sha256": "bd45766ea3f9a649f19d7609bc623494b8d8d43671f34eae72ba15ea9f56e9c3"
+    },
+    {
+      "filename": "SOP Positive Feedback.pdf",
+      "sha256": "42419fee595c2ad561cf43ac62020b86f80174473c2593dc992245cb6f885b9d",
+      "size": 881234,
+      "pages": 11,
+      "page_chars": [
+        248,
+        1397,
+        836,
+        533,
+        408,
+        369,
+        610,
+        491,
+        575,
+        698,
+        593
+      ],
+      "site_path": "files/sop-positive-feedback.pdf",
+      "sanitized": true,
+      "published_sha256": "951cbee0a4235d46523b4ac411068ffcce1c32230f3e0dc3aa84f568821557eb"
+    },
+    {
+      "filename": "Call Audit Parameters.pdf",
+      "sha256": "a088cc9ad608c678b3215f3c8ce6f196d779292a3dccaa92c8f0b6ec92517e2f",
+      "size": 153457,
+      "pages": 3,
+      "page_chars": [
+        1803,
+        1933,
+        757
+      ],
+      "site_path": "files/call-audit-parameters.pdf",
+      "sanitized": false,
+      "published_sha256": "a088cc9ad608c678b3215f3c8ce6f196d779292a3dccaa92c8f0b6ec92517e2f"
+    },
+    {
+      "filename": "SOP Complaints.pdf",
+      "sha256": "5e598c668786f030c1166f08c6e8b1fad46586877b3655853412324852bc0169",
+      "size": 907257,
+      "pages": 14,
+      "page_chars": [
+        292,
+        1291,
+        794,
+        522,
+        381,
+        441,
+        446,
+        907,
+        510,
+        393,
+        716,
+        428,
+        579,
+        209
+      ],
+      "site_path": "files/sop-complaints.pdf",
+      "sanitized": true,
+      "published_sha256": "37ec50b39f2f5f36c9638bbdbbc25d7a875b77238f2a98197c53368609f753f9"
+    }
+  ],
+  "resourceCount": 15,
+  "referenceGuides": 2,
+  "sections": 84,
+  "notes": [
+    "All 15 source files are represented. Published shipping and feedback SOP copies remove credentials and selected example account/customer data.",
+    "Added shade/model illustrations are labeled and separate from the supplied source images.",
+    "Undated references and conflicting labels/version dates are not treated as automatically superseding other guidance."
+  ]
+}

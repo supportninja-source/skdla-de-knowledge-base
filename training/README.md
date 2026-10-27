@@ -1,4 +1,20 @@
-# SKDLA Training Library — free process assistant
+# SKDLA CSR Knowledge Base
+
+The public landing page now opens the CSR knowledge base at `training/`. It includes 15 supplied reference files, 13 recording labels, six visual references, and mixed document/recording search. The assistant remains free and browser-only.
+
+## CSR reference import — 27 October 2026
+
+The supplied ZIP contains 13 PDFs, one XLSX, and one PNG. Every file is represented in `resources.js` and downloadable under `files/`. Search includes 84 document/reference sections (157 passages) alongside the existing recording-note index. Source citations retain document page numbers, spreadsheet ranges, image provenance, dates, and links. The call-driver workbook remains unchanged.
+
+The FedEx/UPS guides contained embedded login credentials. Their public PDF copies remove those credentials and selected example customer details. Complaint and positive-feedback SOP copies also remove selected example screenshots; remaining procedures and safe visuals are retained. Sanitized PDFs are flattened so removed content cannot be recovered from hidden text or original embedded images. Originals remain local and are not committed.
+
+The visual gallery includes the supplied permanent-tooth chart, PAN image, and pickup-call flow. Added SVG illustrations explain shade-code families, full-arch/quadrant/opposing models, and restoration terminology. Added illustrations are explicitly labeled and linked to reference material. Screen colors are not a calibrated shade guide. The model illustrations are terminology aids, not case-specific design or selection instructions.
+
+`document-answers.js` supplies source-based CSR answer routes; `resources-ui.js` provides guide browsing, filters, document downloads, and image enlargement. Mixed-source matching preserves source label/version conflicts, including Quality versus Positive Feedback and inconsistent 2024 SOP cover/history dates. Original recording answers, urgency handling, and private caption import remain available.
+
+Run `node training/csr-tests.cjs` for file coverage, CSR question/source matching, carrier separation, tooth-notation safeguards, source-label conflicts, and urgent escalation. Also run the existing answer and coverage checks after changes to shared retrieval code.
+
+## Recording library and free process assistant
 
 Public static website with notes from 13 labeled caption files, representing 11 unique transcripts and 150 source sections. Training recordings do not establish current policy.
 

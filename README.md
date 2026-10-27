@@ -1,23 +1,20 @@
-# SKDLA Data Entry Knowledge Base
+# SKDLA CSR Knowledge Base
 
-Live source for the SKDLA Data Entry / Ninja Knowledge Base.
+Customer-service SOPs, scripts, shipping guides, visual references, and recording notes.
 
-## Current hosting
-The public website is intended to be published with GitHub Pages from the `main` branch and repository root.
+Live site: https://supportninja-source.github.io/skdla-de-knowledge-base/training/
 
-## Website structure
-- `index.html` — searchable SOP library with formal SOP titles and smart intent-based search
-- `abs-case-entry.html` — dedicated start-to-finish ABS Case Entry Policy & Procedure
-- `data/kb-1.json` through `data/kb-6.json` — SOP article data
-- `.nojekyll` — GitHub Pages static-site compatibility
+The repository-root page opens the CSR knowledge base. GitHub Pages publishes from main at the repository root.
 
-## Version 3.1
-- Retired the old case-designation tracker content, including Cases to Generate, Completed Cases, Completed Tagged Cases, Master Cases, tracker buttons, sync, and related reporting procedures.
-- ClearPath is now identified as the current case-assignment tool. Detailed grab-case steps remain intentionally pending until the official procedure is supplied.
-- Converted displayed article headings from questions to formal SOP titles.
-- Preserved the existing policy/rule text and step-by-step procedures.
-- Added smart client-side search with synonym matching, typo tolerance, natural-language intent matching, and relevance ranking.
-- Updated the dedicated ABS procedure for the ClearPath transition.
+## Contents
 
-## Safety
-Do not add passwords, credentials, PHI, patient information, or confidential case-specific data to this public repository or website.
+- 15 supplied reference files: 13 PDFs, a call-driver XLSX, and a PAN ID image.
+- 13 recording labels, representing 11 unique caption transcripts.
+- Six visual references for tooth numbering, shade-code families, dental models/restorations, PAN colors, and the pickup phone script.
+- Free browser-only question matching with document-page and recording-timestamp citations.
+
+See training/README.md for source coverage, version differences, privacy handling, and validation commands. The reference manifest records supplied files and published-copy hashes.
+
+## Public-file handling
+
+Do not add passwords, credentials, PHI, patient information, or confidential case-specific data to this public repository. Supplied shipping/feedback SOP copies remove credentials and selected example information. Original source files and raw captions remain local; complete captions can be imported privately in the browser.
