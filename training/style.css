@@ -13,3 +13,7 @@
 #answer{display:block;margin-top:20px;border:2px solid #9cbfb5;background:#f3faf7;min-height:150px}#answerTitle{font-size:23px}.assistant-status{margin-top:16px;padding:10px 16px}.assistant-status .ai-disclosure{font-size:11px}#answerText>p{font-size:15px}#answerSources h4{margin-top:24px}
 
 .answer-steps{padding-left:26px;white-space:normal}.answer-steps li{padding-left:6px;margin:0 0 14px;line-height:1.8}.answer-steps li::marker{font-weight:700;color:#17685b}
+
+.search-coverage{font-size:11px;color:#476b60;margin:14px 0}.answer-part+.answer-part{border-top:1px solid #d4e1e8;margin-top:20px;padding-top:12px}.answer-part h4{margin:8px 0 14px}.related-guidance{white-space:normal;border-top:1px solid #d4e1e8;margin:16px 0;padding-top:12px}.related-guidance summary{font-size:13px;font-weight:700;cursor:pointer}.related-guidance p{font-size:13px;margin-top:12px}.source-alias{font-size:11px;color:#607485}
+
+.caption-panel{border-top:1px solid #d9e3e8;padding-top:16px;margin-top:20px;font-size:12px}.caption-panel summary{font-weight:700;cursor:pointer}.caption-panel p{margin:12px 0}.caption-panel label{display:block;font-weight:700}.caption-panel input{max-width:100%;margin:8px 0}.caption-panel button{margin-left:8px}#clearCaptions[hidden]{display:none}
