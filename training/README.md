@@ -21,6 +21,14 @@ No sign-in, API key, paid inference, provider question quota, local server, or a
 - Two caption pairs are identical: Day 2/Day 5 and Day 8/Week 2 Lola (1). This does not prove their underlying videos are identical.
 - The ABS/NCE filename says 1:06:44, but captions extend to 2:02:37.880.
 
+## Version 6 answer behavior
+
+Documented procedures use accessible numbered lists with a recording citation for each step. Definitions stay concise. Additional scenario matches cover held-case photos, images without a live case, cancellation before entry, new uploads, duplicate tickets, missing night guards, late cases, carrier labels, warm transfers, and DSO definitions. General procedure answers preserve one source section's order and exceptions instead of mixing unrelated workflows. Semantic search only reranks lexical matches, and each displayed answer passes the source/quote validator. Matching remains fallible; this update does not add a hosted reasoning model or establish current policy.
+
+The external DE knowledge-base navigation link has been removed from the training page.
+
 ## Validation
+
+Run `node training/answer-tests.cjs` from the repository root for workflow, unsupported-query, source-validation, and ordered-fallback regression checks.
 
 Checked the full dataset, exact source wording in composed answers, FOCUS definition, urgent escalation, technical notification, account entry, unsupported queries, syntax, and browser answer/citation rendering. Meaning-based model loading is checked in the browser; source matching remains available on failure. No Groq key, account change, billing, or installed AI server is needed.
