@@ -1,30 +1,26 @@
-# SKDLA Training Library
+# SKDLA Training Library — free process assistant
 
-A separate training website based on 13 supplied caption files (11 unique transcripts), with 150 source sections. It does not establish current policy.
+Public static website with notes from 13 labeled caption files, representing 11 unique transcripts and 150 source sections. Training recordings do not establish current policy.
 
-## Hosted AI connection
+## Same approach as the original knowledge base
 
-The website uses Groq Qwen3.8 27B with structured source-cited answers. Each visitor enters their own API key in the connection box. The key is checked against Groq, cleared from the input immediately, retained only in page memory, and sent only to https://api.groq.com for authentication. It is never bundled, committed, logged, or stored in browser storage. Closing/navigating away clears the page's key. Do not put a shared secret in this public repository.
+The assistant uses lexical matching plus the same meaning-based search model as the original SKDLA website: Transformers.js 3.8.1 and quantized Xenova/all-MiniLM-L6-v2. The model runs in a background browser worker. It downloads on first use, embeds the 150 topic sections, and matches a question to relevant notes. Immediate lexical answers work while this loads or if browser/network support prevents loading.
 
-Use a free Groq account without enabling billing. Groq quotas and model access apply; the website cannot certify the visitor's billing plan. Questions on the website do not use ChatGPT or Work credits. Groq's current free limits and privacy terms are available in its console. This integration requires the visitor's account/key; without one, notes and source search work normally.
+Answers are assembled from actual reviewed note paragraphs, with source IDs, full-section links, recording labels, and timestamps underneath. Paragraph wording is preserved, avoiding invented definitions and procedures. This is a source-based process assistant, not a hosted generative chatbot or ChatGPT-equivalent reasoning model. Matching can still be imperfect; review context and current approved guidance. Different account workflows and historical instructions may conflict. Unknown questions are left unanswered rather than inventing a process.
 
-Asking sends the question, optional scenario details, and up to six full relevant sanitized note sections to Groq. Do not enter patient identifiers or other private information. No raw captions are sent. Questions and keys are not saved by this website; Groq's own data terms apply. No automatic model substitution or paid upgrade occurs on a quota or access error. Qwen3.8 is a provider preview model; availability may change. The website falls back to source excerpts if the model is unavailable.
+No sign-in, API key, paid inference, provider question quota, local server, or always-on owner computer is required. Every visitor runs search in their own browser. No questions are sent to an AI provider or saved by the website. Public model/runtime downloads contact Hugging Face and jsDelivr; fonts load from Google Fonts. Browser capabilities, internet access, hosting bandwidth, and model-host availability still impose practical limits. There is no promise of unlimited hosting or uninterrupted operation.
 
-Answers use a strict JSON schema, valid source IDs, exact supporting quotes, and an optional clarification. Each quote is checked against the supplied evidence before displaying the answer. Reference validation is not a guarantee of semantic accuracy. The assistant is instructed to retain conditions, explain conflicts, preserve definitions exactly, and avoid treating historical recordings as current policy. The full notes remain accessible under each recording label.
+## Sources and editing
 
-## Why local AI was replaced
+- `data.js`: sanitized recording notes. Never add raw captions, credentials, or customer identifiers.
+- `search.js`: lexical retrieval; `semantic-worker.js`: AI meaning-based matching.
+- `process-assistant.js`: hybrid retrieval and source-paragraph answer composition.
+- `answer-core.js`: evidence packing and source/quote checks; `app.js`: navigation and question interface.
+- Individual notes, combined notes, provenance hashes, duplicate notices, and timestamp links remain available.
+- Drive player support for timestamp links varies; manually seek to the displayed time if necessary.
+- Two caption pairs are identical: Day 2/Day 5 and Day 8/Week 2 Lola (1). This does not prove their underlying videos are identical.
+- The ABS/NCE filename says 1:06:44, but captions extend to 2:02:37.880.
 
-Device testing found the 3B browser model too slow and the 1.5B model returned an incorrect acronym expansion despite a matching quote. The public interface therefore uses the stronger hosted option, with source search available independently. The weak local generation option was removed.
+## Validation
 
-## Evidence and editing
-
-- Every section has a recording label, timestamp, and context link.
-- Timestamp links request a position in Drive; seek manually to the displayed time if the player ignores it.
-- Day 2 and Day 5 caption files are identical; Day 8 and Week 2 Account Entry with Lola (1) caption files are identical. This does not establish that their videos are identical.
-- The ABS/NCE filename says 1:06:44, but its captions extend to 2:02:37.880.
-- Raw captions contain private identifiers and spoken credentials and must never be published. Only sanitized notes are included.
-- `data.js` contains reviewed notes; `search.js` retrieves sections; `answer-core.js` packs evidence and verifies quotes; `cloud-ai.js` handles the fixed Groq endpoint; `app.js` handles the interface.
-
-## Verification limits
-
-Dataset provenance, retrieval, citation/quote checks, navigation, failure handling, and credential non-persistence were checked locally. A real hosted model answer must be tested after the user connects their Groq account; no key is included in this project. AI drafts still need review against the recording evidence and current approved instructions.
+Checked the full dataset, exact source wording in composed answers, FOCUS definition, urgent escalation, technical notification, account entry, unsupported queries, syntax, and browser answer/citation rendering. Meaning-based model loading is checked in the browser; source matching remains available on failure. No Groq key, account change, billing, or installed AI server is needed.
