@@ -11,9 +11,9 @@ function showSources(hits){$('answerSources').innerHTML='<h4>Recording evidence 
 function showExtracts(hits){$('answerTitle').textContent='Source answer';$('answerBadge').textContent='EXTRACTED FROM TRAINING NOTES';$('answerText').textContent=hits.length?'The closest documented guidance is below. Read each source in context: these sessions can describe different account types or historical workflows.':'I could not find enough matching guidance in these training notes. Try a more specific process question, or confirm the answer with your lead. I will not invent a procedure.';showSources(hits)}
 function finishAI(){generating=false;clearTimeout(aiTimer);$('askButton').disabled=false;}
 function renderAnswer(data){
- $('answerTitle').textContent='Process guidance for your question';$('answerBadge').textContent='ANSWER FROM REVIEWED TRAINING NOTES';
+ $('answerTitle').textContent='Your answer';$('answerBadge').textContent=data.reviewed?'REVIEWED PROCESS ANSWER':'MATCHED TRAINING GUIDANCE';
  const cited=[...new Set(data.blocks.map(b=>b.source))];
- $('answerText').innerHTML=data.blocks.map(b=>`<p>${esc(b.text)} <a class="answer-citation" href="#evidence-${esc(b.source)}">[${esc(b.source)}]</a></p>`).join('')+(data.clarification?`<div class="clarify"><strong>To confirm</strong><p>${esc(data.clarification)}</p></div>`:'')+(!data.blocks.length?'<p>The recordings do not establish an answer for this question. Please give more process details or confirm with your lead.</p>':'')+'<p class="answer-limit">Assembled from caption-based training notes. Meaning-based matching can be imperfect; check the recording context and current approved process.</p>';
+ $('answerText').innerHTML=data.blocks.map((b,i)=>`<p>${data.reviewed&&data.blocks.length>1?(i+1)+'. ':''}${esc(b.text)} <a class="answer-citation" href="#evidence-${esc(b.source)}">[${esc(b.source)}]</a></p>`).join('')+(data.clarification?`<div class="clarify"><strong>To confirm</strong><p>${esc(data.clarification)}</p></div>`:'')+(!data.blocks.length?'<p>The recordings do not establish an answer for this question. Please give more process details or confirm with your lead.</p>':'')+'<p class="answer-limit">Assembled from caption-based training notes. Meaning-based matching can be imperfect; check the recording context and current approved process.</p>';
  showSources(pendingSources);
  for(const source of pendingSources){const card=document.getElementById('evidence-'+source.sourceId);if(!card)continue;card.classList.toggle('cited',cited.includes(source.sourceId));const quotes=data.blocks.filter(b=>b.source===source.sourceId).map(b=>b.quote);if(quotes.length){const q=document.createElement('blockquote');q.textContent=[...new Set(quotes)].join('\n');card.querySelector('details').before(q);}}
 }
@@ -26,7 +26,7 @@ function answerNow(query){
 }
 function ensureSemantic(){
  if(semanticStarted)return;semanticStarted=true;
- try{semanticWorker=new Worker('semantic-worker.js?v=4',{type:'module'});
+ try{semanticWorker=new Worker('semantic-worker.js?v=5',{type:'module'});
  semanticWorker.onerror=()=>{$('aiStatus').textContent='Meaning-based search is unavailable on this browser. Source-based question matching still works.';};
  semanticWorker.onmessage=({data})=>{
   if(data.type==='progress')$('aiStatus').textContent=data.text;
@@ -37,6 +37,10 @@ function ensureSemantic(){
  semanticWorker.postMessage({type:'load',docs:index.map(s=>({id:s.id,text:s.title+'. '+s.text.slice(0,1800)}))});
  }catch(err){$('aiStatus').textContent='Source-based question matching is ready. This browser does not support background AI search.';}
 }
+let answerDebounce;
+function resetAnswer(){$('answerTitle').textContent='Your answer';$('answerBadge').textContent='AI PROCESS ASSISTANT';$('answerText').textContent='Type a process question above. Your answer will appear here, with recording references below.';$('answerSources').innerHTML='';}
+function scheduleAnswer(){clearTimeout(answerDebounce);if($('question').value.trim().length<3){resetAnswer();return;}answerDebounce=setTimeout(ask,450);}
+$('question').addEventListener('input',scheduleAnswer);$('scenario').addEventListener('input',scheduleAnswer);
 function ask(e){e?.preventDefault();if(!$('question').value.trim())return;const query=currentQuery();answerNow(query);ensureSemantic();if(semanticReady&&semanticQuery!==query)semanticWorker.postMessage({type:'query',query});}
 $('askForm').addEventListener('submit',ask);document.querySelectorAll('[data-question]').forEach(b=>b.addEventListener('click',()=>{$('question').value=b.dataset.question;ask()}));$('search').addEventListener('input',renderList);$('category').addEventListener('change',renderList);$('print').addEventListener('click',()=>window.print());
 $('recording').addEventListener('click',e=>{const link=e.target.closest('.toc a');if(link){e.preventDefault();const n=Number(link.getAttribute('href').replace('#section-',''));go(active,n);}});
