@@ -31,4 +31,14 @@ The external DE knowledge-base navigation link has been removed from the trainin
 
 Run `node training/answer-tests.cjs` from the repository root for workflow, unsupported-query, source-validation, and ordered-fallback regression checks.
 
+## Version 7: complete passage coverage and private captions
+
+The original 13 VTT files were parsed in full and checked against the existing SHA-256 hashes, cue counts, word counts, and caption time ranges. The inventory covers 196,462 caption words, or 167,647 words across 11 unique transcripts; two caption pairs are identical. `caption-audit.json` records this file-integrity audit. It does not certify every summary statement or current policy.
+
+Public search indexes every word of all 538 note passages in 150 sections. Semantic input uses 547 overlapping windows instead of truncating long sections or relying on one embedding per section. Public note vectors are cached by corpus hash. Search uses passage relevance, distinct carrier/account names, scenario qualification, separate answers for multiple questions, and separately cited related evidence and limits. Unsupported cancellation policies and ambiguous account levels ask for clarification. This remains an extractive assistant, not a general reasoning model.
+
+For complete original wording, the page accepts the original VTT files or a private `skdla-private-captions-v1` JSON bundle. `caption-search.js` indexes all cues locally, preserves recording timestamps, and deduplicates identical transcripts. Imported raw captions and their vectors are kept in memory, never uploaded or written to the public repository. Clearing or reloading removes imported text. A separately supplied self-contained private HTML copy can embed all captions for local use; it is not deployed publicly. Caption excerpts are labeled as excerpts rather than converted into invented process steps. Spoken credentials and customer examples may exist in raw captions, so those sources remain private.
+
+Run `node training/coverage-tests.cjs` for all-passage coverage, cross-recording questions, ambiguity, cancellation limits, and multiple-question checks. Pass a local private bundle path as the final argument to additionally check that every cue in all 13 original files is covered and that wording absent from notes can be retrieved. The private bundle is not part of this repository.
+
 Checked the full dataset, exact source wording in composed answers, FOCUS definition, urgent escalation, technical notification, account entry, unsupported queries, syntax, and browser answer/citation rendering. Meaning-based model loading is checked in the browser; source matching remains available on failure. No Groq key, account change, billing, or installed AI server is needed.
