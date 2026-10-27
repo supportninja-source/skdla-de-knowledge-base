@@ -52,6 +52,9 @@
     if(used.has(s.sourceId)||!result.blocks.length||s.recordId===ordered[0]?.recordId)continue;
     const best=s.passageScores?.slice().sort((a,b)=>b.score-a.score)[0];
     if(!best||best.coverage<.6||best.matched<Math.min(3,terms.length))continue;
+    const anchors=terms.filter(t=>/^(pan|stl|dso|mb2|aspen|incisive|fedex|ups|shade|photo|photos|portal)$/.test(t));
+    const contextWords=S.tokens(s.title+' '+best.text);
+    if(anchors.some(t=>![...S.forms(t)].some(v=>contextWords.includes(v))))continue;
     const words=new Set(S.tokens(best.text));
     if(result.blocks.some(b=>{const old=new Set(S.tokens(b.text));return [...words].filter(w=>old.has(w)).length/Math.max(1,words.size)>.75}))continue;
     related.push({text:best.text,quote:best.text,source:s.sourceId,title:s.title});
