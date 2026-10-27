@@ -28,6 +28,7 @@ const fixtures=[
 ];
 for(const [q,id,text]of fixtures){const {result,sources}=answer(q);assert(result.blocks.some(b=>sources.find(s=>s.sourceId===b.source).id===id&&text.test(b.text)),q);}
 const qualified=answer('How do I create a new MB2 account?').result;assert(qualified.needsDetails);assert.equal(qualified.blocks.length,0);assert.match(qualified.clarification,/principal.*subaccount/);
+const pan=answer('Can I identify a case using only the PAN number?');assert(pan.result.related.every(b=>/\bPAN\b/i.test(b.title+' '+b.text)),'Related PAN evidence must retain the specific identifier.');
 const cancel=answer('How do I cancel a case after invoicing?').result;assert.equal(cancel.blocks.length,0);assert.match(cancel.clarification,/before entry/);
 const multi=answer('How do I create UPS and FedEx labels?').result;assert.equal(multi.groups.length,2);assert(multi.groups.every(g=>g.blocks.length&&g.procedural));
 const topics=new Set(index.map(s=>s.recordId));assert.equal(topics.size,11);for(const r of TRAINING_DATA.filter(r=>r.duplicateOf))assert(index.some(s=>s.aliases.some(a=>a.id===r.id)));
