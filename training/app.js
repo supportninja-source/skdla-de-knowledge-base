@@ -13,7 +13,8 @@ function finishAI(){generating=false;clearTimeout(aiTimer);$('askButton').disabl
 function renderAnswer(data){
  $('answerTitle').textContent='Your answer';$('answerBadge').textContent=data.reviewed?'REVIEWED PROCESS ANSWER':'MATCHED TRAINING GUIDANCE';
  const cited=[...new Set(data.blocks.map(b=>b.source))];
- $('answerText').innerHTML=data.blocks.map((b,i)=>`<p>${data.reviewed&&data.blocks.length>1?(i+1)+'. ':''}${esc(b.text)} <a class="answer-citation" href="#evidence-${esc(b.source)}">[${esc(b.source)}]</a></p>`).join('')+(data.clarification?`<div class="clarify"><strong>To confirm</strong><p>${esc(data.clarification)}</p></div>`:'')+(!data.blocks.length?'<p>The recordings do not establish an answer for this question. Please give more process details or confirm with your lead.</p>':'')+'<p class="answer-limit">Assembled from caption-based training notes. Meaning-based matching can be imperfect; check the recording context and current approved process.</p>';
+ const block=b=>`${esc(b.text)} <a class="answer-citation" href="#evidence-${esc(b.source)}">[${esc(b.source)}]</a>`;
+ $('answerText').innerHTML=(data.topic?`<p><strong>${esc(data.topic)}</strong></p>`:'')+(data.procedural?'<p>Follow the documented steps in order:</p><ol class="answer-steps">'+data.blocks.map(b=>`<li>${block(b)}</li>`).join('')+'</ol>':data.blocks.map(b=>`<p>${block(b)}</p>`).join(''))+(data.clarification?`<div class="clarify"><strong>To confirm</strong><p>${esc(data.clarification)}</p></div>`:'')+(!data.blocks.length?'<p>The recordings do not establish an answer for this question. Please give more process details or confirm with your lead.</p>':'')+'<p class="answer-limit">Based on caption-based training notes. Check the linked evidence and current approved process before acting.</p>';
  showSources(pendingSources);
  for(const source of pendingSources){const card=document.getElementById('evidence-'+source.sourceId);if(!card)continue;card.classList.toggle('cited',cited.includes(source.sourceId));const quotes=data.blocks.filter(b=>b.source===source.sourceId).map(b=>b.quote);if(quotes.length){const q=document.createElement('blockquote');q.textContent=[...new Set(quotes)].join('\n');card.querySelector('details').before(q);}}
 }
@@ -22,7 +23,7 @@ function answerNow(query){
  const hits=window.ProcessAssistant.retrieve(query,index,S,semanticQuery===query?semanticScores:null);
  pendingSources=window.TrainingAnswer.evidence(query,hits,S);$('answer').hidden=false;
  const result=window.ProcessAssistant.compose(query,pendingSources,S);
- if(result.blocks.length)renderAnswer(result);else showExtracts([]);
+ if(result.blocks.length){try{window.TrainingAnswer.validate({answer:result.blocks,clarification:result.clarification},pendingSources);renderAnswer(result);}catch(err){showExtracts([]);}}else showExtracts([]);
 }
 function ensureSemantic(){
  if(semanticStarted)return;semanticStarted=true;
