@@ -7,7 +7,7 @@
   "note_sections": 150,
   "note_passages": 538,
   "scope": "All original caption files parsed in full and matched to the existing SHA-256, cue count, word count, and time-range manifest. This verifies file inventory and note-index coverage, not the factual completeness of summaries or current policy.",
-  "runtime_source": "Sanitized caption-derived notes; raw captions are not published or searched at runtime.",
+  "runtime_source": "The public page searches sanitized caption-derived notes by default. Complete original captions are searched only when loaded privately in the browser or included in the separately supplied local HTML copy; raw captions are not published.",
   "recordings": [
     {
       "id": "R01",
