@@ -4,7 +4,7 @@ The public landing page now opens the CSR knowledge base at `training/`. It incl
 
 ## CSR reference import — 27 October 2026
 
-The supplied ZIP contains 13 PDFs, one XLSX, and one PNG. Every file is represented in `resources.js` and downloadable under `files/`. Search includes 84 document/reference sections (157 passages) alongside the existing recording-note index. Source citations retain document page numbers, spreadsheet ranges, image provenance, dates, and links. The call-driver workbook remains unchanged.
+The supplied ZIP contains 13 PDFs, one XLSX, and one PNG. Every file is represented in `resources.js` and downloadable under `files/`. Search includes 88 document/reference sections (157 passages) alongside the existing recording-note index. Source citations retain document page numbers, spreadsheet ranges, image provenance, dates, and links. The call-driver workbook remains unchanged.
 
 The FedEx/UPS guides contained embedded login credentials. Their public PDF copies remove those credentials and selected example customer details. Complaint and positive-feedback SOP copies also remove selected example screenshots; remaining procedures and safe visuals are retained. Sanitized PDFs are flattened so removed content cannot be recovered from hidden text or original embedded images. Originals remain local and are not committed.
 
@@ -58,3 +58,7 @@ For complete original wording, the page accepts the original VTT files or a priv
 Run `node training/coverage-tests.cjs` for all-passage coverage, cross-recording questions, ambiguity, cancellation limits, and multiple-question checks. Pass a local private bundle path as the final argument to additionally check that every cue in all 13 original files is covered and that wording absent from notes can be retrieved. The private bundle is not part of this repository.
 
 Checked the full dataset, exact source wording in composed answers, FOCUS definition, urgent escalation, technical notification, account entry, unsupported queries, syntax, and browser answer/citation rendering. Meaning-based model loading is checked in the browser; source matching remains available on failure. No Groq key, account change, billing, or installed AI server is needed.
+
+## November 19, 2026: Complaint process and current routing
+
+A prominent complaints section now documents negative-feedback identification, ABS case-specific and account-specific complaint logging, required notes and subtype, assignment ownership, follow-up, and callbacks. The newer client team message directs Removables complaints to Elena Meza (not Javier Balderrama or Javier Flores) and Full Arch complaints to Javier Balderrama. D15 contains the updated operational guidance alongside the unchanged original 2024 PDF SOP; D01 flags its undated Removables BU roster as historical for complaint routing. Other complaint owners must be confirmed with Cassandra Sandoval or Sylvia Powell rather than inferred from outdated contacts. Updated direct KB answer routing and CSR tests cover these instructions.
