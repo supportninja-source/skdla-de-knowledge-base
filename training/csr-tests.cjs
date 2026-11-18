@@ -2,9 +2,14 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 global.window=global;require('./data.js');require('./resources.js');
 const S=require('./search.js'),A=require('./answer-core.js');require('./process-answers.js');require('./document-answers.js');const P=require('./process-assistant.js');
 const docIndex=S.makeDocumentIndex([...CSR_RESOURCES,...CSR_REFERENCE_GUIDES]),index=[...S.makeIndex(TRAINING_DATA),...docIndex];
-assert.equal(CSR_RESOURCES.length,15);assert.equal(CSR_REFERENCE_GUIDES.length,2);assert.equal(docIndex.length,84);
+assert.equal(CSR_RESOURCES.length,15);assert.equal(CSR_REFERENCE_GUIDES.length,2);assert.equal(docIndex.length,88);
 for(const d of CSR_RESOURCES){assert(fs.existsSync(path.join(__dirname,d.fileUrl)),d.fileUrl);assert(d.sections.length,d.title);for(const s of d.sections){assert(s.content.length);if(s.image)assert(fs.existsSync(path.join(__dirname,s.image)));}}
 assert.equal(new Set(CSR_RESOURCES.map(d=>d.filename)).size,15);
+const currentRouting=CSR_RESOURCES.find(d=>d.id==='D15').sections.find(s=>s.id==='routing').content.join(' ');
+assert.match(currentRouting,/REMOVABLES complaints → ELENA MEZA/);
+assert.match(currentRouting,/FULL ARCH complaints → JAVIER BALDERRAMA/);
+assert.deepEqual(CSRAnswers.pinned('Who should receive Removables complaints?',docIndex).map(s=>s.id),['D15-routing']);
+
 function answer(q){const sources=A.evidence(q,P.retrieve(q,index,S),S),result=P.compose(q,sources,S);A.validate({answer:[...result.blocks,...result.related]},sources);return {result,sources};}
 const fixtures=[
  ['How do I log a case-specific complaint in ABS?','D15-case',/Save Note/],
@@ -43,4 +48,4 @@ const multi=answer('How do I create UPS and FedEx labels?').result;assert.equal(
 const urgent=answer('How do I handle a patient already in the chair?');assert(urgent.result.blocks.some(b=>/immediately/.test(b.text)));
 const technical=answer('Is a Technical Support note enough to notify production?');assert(technical.result.blocks.some(b=>/does not notify/.test(b.text)));
 for(const q of ['Who won the world cup?','What is bitcoin?'])assert.equal(answer(q).result.blocks.length,0,q);
-console.log('Passed: 15 source files, 84 reference sections, 28 CSR questions, tooth-notation safeguards, source conflicts, both carriers, urgent escalation, and technical notification.');
+console.log('Passed: 15 source files, 88 reference sections, 28 CSR questions, tooth-notation safeguards, source conflicts, both carriers, urgent escalation, and technical notification.');
