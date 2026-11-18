@@ -36,7 +36,7 @@
  $('resourceSearch').addEventListener('input',renderList);$('resourceCategory').addEventListener('change',renderList);$('closeVisual').addEventListener('click',()=>$('visualDialog').close());
  $('visualDialog').addEventListener('click',e=>{if(e.target===$('visualDialog')){const r=$('visualDialog').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('visualDialog').close();}});
  $('documentCount').textContent=documents.length;$('visualCount').textContent=visualItems.length;
- renderList();renderVisuals();bindOpen(document.querySelector('.quick-standards'));
+ renderList();renderVisuals();bindOpen(document.querySelector('.quick-standards'));bindOpen(document.querySelector('.complaints-panel'));
  root.CSRLibrary={go};
  const hash=new URLSearchParams(location.hash.slice(1));if(hash.get('document'))go(hash.get('document'),hash.get('topic'));
 })(window);
